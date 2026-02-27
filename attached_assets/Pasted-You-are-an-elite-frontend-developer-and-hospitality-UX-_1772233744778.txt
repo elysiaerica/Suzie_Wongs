@@ -1,0 +1,175 @@
+You are an elite frontend developer and hospitality UX designer specialising in nightlife venues.
+
+Your task is to design and build a complete modern website for a real Brisbane venue:
+
+Suzie Wong’s Good Time Bar
+
+CRITICAL CONTEXT:
+
+Suzie Wong’s is a Hawaiian-inspired dive bar and live music venue located in Fortitude Valley, Brisbane.
+
+It is NOT a polished cocktail lounge.
+
+It is:
+
+- chaotic
+- loud
+- fun
+- irreverent
+- grungy
+- music-driven
+- surf shack inspired
+
+It is accessed through a retro fridge door and is known for live music 4–5 nights per week.
+
+The venue personality is rebellious, tongue-in-cheek, and self-aware.
+
+Their existing messaging includes tone such as:
+
+"So who the fuck is Suzie Wong?"
+
+"Life is too short to drink responsibly"
+
+This tone MUST be preserved and elevated, not sanitised.
+
+DO NOT make the site feel corporate, luxury, or generic.
+
+It must feel immersive and alive.
+
+The site should feel like stepping into the venue itself.
+
+---
+
+CONTENT SOURCES:
+
+Use and adapt written content from:
+
+Current website:
+https://suziewongsgoodtimebar.com.au
+
+Instagram:
+https://www.instagram.com/suziewongsgoodtimebar/
+
+Facebook:
+https://www.facebook.com/suziewongsgoodtimebar
+
+You may rewrite and improve text for clarity and UX.
+
+DO NOT copy graphics or images.
+
+Use placeholder images.
+
+---
+
+PRIMARY OBJECTIVES:
+
+The website must:
+
+- Make users want to visit immediately
+- Showcase live music identity
+- Communicate personality strongly
+- Capture function enquiries
+- Show upcoming events
+- Establish legitimacy
+
+---
+
+SITE STRUCTURE:
+
+Create these pages:
+
+HOME
+WHAT'S ON
+ABOUT
+FUNCTIONS
+GALLERY
+CONTACT
+
+---
+
+HOME PAGE REQUIREMENTS:
+
+Hero section must include:
+
+Large immersive image
+Bold venue name
+Tagline options such as:
+
+"Fortitude Valley’s Worst Kept Secret"
+
+"Life Is Too Short To Drink Responsibly"
+
+"So Who The Fuck Is Suzie Wong?"
+
+Primary CTA buttons:
+
+View What’s On
+Book A Function
+
+Scroll sections should include:
+
+Live Music Promotion
+Venue personality section
+Gallery preview
+Function booking CTA
+
+---
+
+VISUAL STYLE:
+
+Dark background base
+
+Accent colours inspired by:
+
+Neon signage
+Dive bar lighting
+Hawaiian surf aesthetic
+
+Typography must feel bold and energetic.
+
+Avoid minimalist startup style.
+
+---
+
+USER EXPERIENCE:
+
+Mobile-first design is mandatory.
+
+Must look exceptional on phone.
+
+Include:
+
+Sticky navigation
+Smooth scrolling
+Subtle animation
+Hover effects
+
+---
+
+TECH REQUIREMENTS:
+
+Use:
+
+HTML
+CSS
+JavaScript
+
+Clean, production-ready structure.
+
+No frameworks required.
+
+---
+
+IMPORTANT DESIGN GOAL:
+
+This website must make users feel the same emotional energy as being inside Suzie Wong’s on a live music night.
+
+It must feel alive.
+
+Not static.
+
+---
+
+OUTPUT:
+
+Build complete working multi-page website ready for deployment.
