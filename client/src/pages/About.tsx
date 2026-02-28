@@ -7,6 +7,8 @@ import img417 from "@assets/IMG_0417_1772233759718.jpeg";
 import img422 from "@assets/IMG_0422_1772233759717.jpeg";
 import img421 from "@assets/IMG_0421_1772233759717.jpeg";
 import img418 from "@assets/IMG_0418_1772233759718.jpeg";
+import img466 from "@assets/IMG_0466_1772241786153.jpeg";
+import img432 from "@assets/IMG_0432_1772241786153.jpeg";
 
 export default function About() {
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function About() {
           data-testid="text-about-title"
         >
           So Who The<br />
-          <span className="neon-pink">F*ck Is<br />Suzie Wong?</span>
+          <span className="section-highlight">F*ck Is<br />Suzie Wong?</span>
         </h1>
       </section>
 
@@ -109,7 +111,7 @@ export default function About() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none fade-in-up">
               What Makes This Place<br />
-              <span className="neon-pink">Different</span>
+              <span className="section-highlight">Different</span>
             </h2>
           </div>
 
@@ -137,7 +139,7 @@ export default function About() {
                 num: "04",
                 title: "The People",
                 desc: "Our staff are legends. No dress code enforcement, no attitude, no pretension. Just people who love music, love good times, and happen to be very good at pouring drinks fast.",
-                img: img422,
+                img: img466,
               },
               {
                 num: "05",
@@ -149,7 +151,7 @@ export default function About() {
                 num: "06",
                 title: "Suzie Wong's Lager",
                 desc: "Our own house lager at 4.2% ABV. Brewed to be cold, crisp, and dangerously drinkable. Because you're here for a good time, not a hard time.",
-                img: img418,
+                img: img432,
               },
             ].map((item, i) => (
               <div
@@ -208,7 +210,7 @@ export default function About() {
               style={{ animationDelay: `${i * 80}ms` }}
               data-testid={`card-stat-${i}`}
             >
-              <div className="text-4xl md:text-5xl font-black text-white mb-2 neon-pink">{stat.num}</div>
+              <div className="text-4xl md:text-5xl font-black mb-2 section-highlight">{stat.num}</div>
               <div className="text-xs font-bold uppercase tracking-widest text-white/60 mb-1">{stat.label}</div>
               <div className="text-xs text-white/30">{stat.sub}</div>
             </div>

@@ -16,13 +16,21 @@ import img417 from "@assets/IMG_0417_1772233759718.jpeg";
 import img416 from "@assets/IMG_0416_1772233759718.jpeg";
 import img415 from "@assets/IMG_0415_1772233759718.jpeg";
 import img414 from "@assets/IMG_0414_1772233759718.jpeg";
+import img466 from "@assets/IMG_0466_1772241786153.jpeg";
+import img431 from "@assets/IMG_0431_1772241786153.jpeg";
+import img432 from "@assets/IMG_0432_1772241786153.jpeg";
+import img434 from "@assets/IMG_0434_1772241786153.jpeg";
 
 const photos = [
+  { src: img466, caption: "She knows exactly what she's doing behind that bar", category: "Bar" },
   { src: img429, caption: "When things get loose on a Saturday night", category: "Crowd" },
+  { src: img434, caption: "The neon says what we're all thinking", category: "Venue" },
   { src: img420, caption: "The neon sign that says it all", category: "Stage" },
+  { src: img431, caption: "Clinking glasses with a smile — that's the Suzie way", category: "Bar" },
   { src: img424, caption: "Good times at the bar", category: "Crowd" },
   { src: img425, caption: "The bar — stocked and ready", category: "Bar" },
   { src: img419, caption: "Another packed night on the stage", category: "Stage" },
+  { src: img432, caption: "Sailor Jerry and Suzie Wong's — a natural pairing", category: "Bar" },
   { src: img423, caption: "Nobody told them to get on the bar. They just did.", category: "Crowd" },
   { src: img422, caption: "The bartenders here are legends", category: "Bar" },
   { src: img428, caption: "The wall of a thousand frames", category: "Venue" },

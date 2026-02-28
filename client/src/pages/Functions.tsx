@@ -131,7 +131,7 @@ export default function Functions() {
           </div>
           <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none mb-4 fade-in-up" data-testid="text-functions-title">
             Your Party.<br />
-            <span className="neon-pink">Our Bar.</span>
+            <span className="section-highlight">Our Bar.</span>
           </h1>
           <p className="text-white/70 text-xl max-w-xl leading-relaxed fade-in-up">
             Suzie Wong's is made for celebrations that actually go off. Birthdays. Bucks nights.

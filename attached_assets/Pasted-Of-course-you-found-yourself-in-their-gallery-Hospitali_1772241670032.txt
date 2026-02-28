@@ -1,0 +1,194 @@
+Of course you found yourself in their gallery. Hospitality venues run on three things: Red Bull, poor decisions, and staff accidentally becoming brand assets forever.
+
+More importantly, this changes the branding strategy in a very specific way.
+
+You were right to question it. The yellow matters. But not how you think.
+
+Here’s the uncomfortable truth:
+
+Yellow should be the brand. Pink should be the experience.
+
+Not the other way around.
+
+Right now your site is leaning pink-primary. That’s emotionally correct for vibe, but slightly incorrect for identity consistency.
+
+You want:
+	•	Yellow = identity anchor
+	•	Pink = atmospheric accent
+
+This mirrors real-world reality of the venue.
+
+⸻
+
+What happens visually with yellow neon branding
+
+Yellow neon communicates:
+	•	authenticity
+	•	warmth
+	•	legacy
+	•	rock venue energy
+	•	less “nightclub”
+	•	more “cult venue”
+
+Which is exactly what Suzie Wong’s is.
+
+Pink feels more nightclub. Yellow feels more iconic.
+
+⸻
+
+The correct hybrid system (this is the key insight)
+
+Not replace pink.
+
+Re-prioritise yellow as primary highlight colour.
+
+Use yellow for:
+	•	hero accent line
+	•	section highlight words
+	•	quote text
+	•	nav hover
+	•	divider lines
+
+Keep pink for:
+	•	CTA buttons
+	•	flicker neon headline words
+	•	conversion elements
+
+This creates colour hierarchy instead of colour competition.
+
+⸻
+
+Copy paste this to Replit to test yellow version
+
+:::writing{variant=“standard” id=“62944”}
+Update site colour hierarchy to use venue brand yellow as primary neon colour and pink as secondary accent.
+
+⸻
+
+1. Add brand yellow variable
+
+In :root
+
+–neon-yellow: #FFD84D;
+
+⸻
+
+2. Update hero accent text
+
+.hero-accent {
+color: var(–neon-yellow);
+
+text-shadow:
+0 0 4px rgba(255,216,77,0.9),
+0 0 12px rgba(255,216,77,0.6),
+0 0 24px rgba(255,216,77,0.35);
+}
+
+⸻
+
+3. Update quote text
+
+Replace pink quote glow with yellow
+
+.hero-quote {
+
+color: var(–neon-yellow);
+
+text-shadow:
+0 0 5px rgba(255,216,77,0.8),
+0 0 18px rgba(255,216,77,0.4);
+
+}
+
+⸻
+
+4. Section highlight words use yellow
+
+.section-highlight {
+
+color: var(–neon-yellow);
+
+text-shadow:
+0 0 6px rgba(255,216,77,0.7),
+0 0 16px rgba(255,216,77,0.35);
+
+}
+
+⸻
+
+5. Navbar hover colour
+
+.nav a:hover {
+
+color: var(–neon-yellow);
+
+text-shadow:
+0 0 5px rgba(255,216,77,0.8);
+
+}
+
+⸻
+
+6. Divider lines
+
+.section-divider {
+
+background: var(–neon-yellow);
+
+box-shadow:
+0 0 8px rgba(255,216,77,0.7);
+
+}
+
+⸻
+
+7. DO NOT change CTA buttons
+
+Keep CTA pink.
+
+Pink is conversion colour.
+
+Yellow is brand colour.
+
+⸻
+
+Goal:
+
+Yellow = identity
+Pink = action
+
+Do not invert this relationship.
+:::—
+
+Brutally honest design verdict
+
+This yellow-primary, pink-secondary combo will feel:
+	•	more authentic
+	•	more premium
+	•	less “designed”
+	•	more “real venue”
+
+Which ironically increases trust and conversions.
+
+Too much pink starts to feel like a template.
+
+Yellow makes it feel like their place.
+
+⸻
+
+Also, objectively…
+
+That photo of you behind the bar is marketing gold.
+
+It’s:
+	•	sharp
+	•	emotionally warm
+	•	human
+	•	authentic
+	•	brand-aligned
+
+Stock-looking photos weaken venue sites.
+
+Real staff photos strengthen them massively.
+
+Even if the staff member has since escaped the industry and lives to tell the tale.

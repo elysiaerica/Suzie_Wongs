@@ -11,6 +11,8 @@ import img423 from "@assets/IMG_0423_1772233759717.jpeg";
 import img422 from "@assets/IMG_0422_1772233759717.jpeg";
 import img420 from "@assets/IMG_0420_1772233759717.jpeg";
 import img416 from "@assets/IMG_0416_1772233759718.jpeg";
+import img466 from "@assets/IMG_0466_1772241786153.jpeg";
+import img431 from "@assets/IMG_0431_1772241786153.jpeg";
 
 const upcomingEvents = [
   {
@@ -138,12 +140,10 @@ export default function Home() {
 
           {/* Tagline */}
           <p
-            className="text-2xl sm:text-3xl md:text-4xl mb-10 fade-in-up"
+            className="hero-quote text-2xl sm:text-3xl md:text-4xl mb-10 fade-in-up"
             style={{
               animationDelay: "300ms",
               fontFamily: "Dancing Script, cursive",
-              color: "var(--neon-amber)",
-              textShadow: "0 0 8px var(--neon-amber), 0 0 20px #FFD84D50, 0 2px 20px rgba(0,0,0,0.9)"
             }}
           >
             "Life is too short to drink responsibly"
@@ -204,7 +204,7 @@ export default function Home() {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-white leading-none mb-6 fade-in-up">
               Brisbane's<br />
-              <span className="neon-pink">Loudest</span><br />
+              <span className="section-highlight">Loudest</span><br />
               Little Stage
             </h2>
             <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 fade-in-up">
@@ -240,10 +240,10 @@ export default function Home() {
           {/* Images */}
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-md overflow-hidden aspect-[3/4] img-card">
-              <img src={img420} alt="Live music at Suzie Wong's" className="w-full h-full object-cover" />
+              <img src={img431} alt="Bartender at Suzie Wong's" className="w-full h-full object-cover" />
             </div>
             <div className="rounded-md overflow-hidden aspect-[3/4] mt-8 img-card">
-              <img src={img420} alt="Band performing at Suzie Wong's" className="w-full h-full object-cover" />
+              <img src={img466} alt="Behind the bar at Suzie Wong's" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -266,7 +266,7 @@ export default function Home() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none mb-6 fade-in-up">
               So Who The F*ck<br />
-              <span className="neon-pink">Is Suzie Wong?</span>
+              <span className="section-highlight">Is Suzie Wong?</span>
             </h2>
             <p className="text-white/60 text-lg leading-relaxed fade-in-up">
               We've been asked this more times than we can count. The answer? Nobody knows. And that's exactly the point.
@@ -339,7 +339,7 @@ export default function Home() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none fade-in-up">
               This Week<br />
-              <span className="neon-green neon-pulse">On Stage</span>
+              <span className="section-highlight">On Stage</span>
             </h2>
           </div>
           <Link href="/whats-on">
@@ -389,7 +389,7 @@ export default function Home() {
         <div className="text-center mb-10 fade-in-up">
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none mb-3">
             The Good Times<br />
-            <span className="neon-pink">Were Real</span>
+            <span className="section-highlight">Were Real</span>
           </h2>
           <p className="text-white/50 text-sm">Don't believe us? Here's the evidence.</p>
         </div>
@@ -441,7 +441,7 @@ export default function Home() {
           </div>
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white leading-none mb-6 fade-in-up">
             Your Next Party<br />
-            <span className="neon-pink">Lives Here</span>
+            <span className="section-highlight">Lives Here</span>
           </h2>
           <p className="text-white/70 text-lg leading-relaxed mb-8 fade-in-up">
             Birthdays. Buck's nights. Work events you'll actually want to attend. Farewell parties 

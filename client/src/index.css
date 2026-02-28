@@ -90,6 +90,7 @@
   --neon-pink: #FF4FA3;
   --neon-green: #0DFF6E;
   --neon-amber: #FFD84D;
+  --neon-yellow: #FFD84D;
   --logo-text: #FFE6F2;
   --secondary-glow: #FF8CC8;
 
@@ -272,6 +273,29 @@ body::after {
     0 0 16px rgba(255,79,163,0.3);
 }
 
+/* Yellow identity system — Yellow = brand, Pink = action */
+.hero-accent {
+  color: var(--neon-yellow);
+  text-shadow:
+    0 0 4px rgba(255,216,77,0.9),
+    0 0 12px rgba(255,216,77,0.6),
+    0 0 24px rgba(255,216,77,0.35);
+}
+
+.hero-quote {
+  color: var(--neon-yellow);
+  text-shadow:
+    0 0 5px rgba(255,216,77,0.8),
+    0 0 18px rgba(255,216,77,0.4);
+}
+
+.section-highlight {
+  color: var(--neon-yellow);
+  text-shadow:
+    0 0 6px rgba(255,216,77,0.7),
+    0 0 16px rgba(255,216,77,0.35);
+}
+
 /* Primary CTA button */
 .primary-btn {
   background: linear-gradient(135deg, #FF4FA3 0%, #FF2D8D 100%) !important;
@@ -381,10 +405,11 @@ body::after {
   filter: brightness(1.1);
 }
 
-/* Section divider */
+/* Section divider — yellow per brand hierarchy */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255,31,106,0.4), transparent);
+  background: linear-gradient(to right, transparent, rgba(255,216,77,0.5), transparent);
+  box-shadow: 0 0 8px rgba(255,216,77,0.7);
 }
 
 /* Scrollbar styling */
@@ -424,12 +449,11 @@ body::after {
   transform: translateY(0);
 }
 
-/* Nav hover neon glow */
+/* Nav hover neon glow — yellow per brand hierarchy */
 .nav-hover-glow:hover {
-  color: #FF4FA3 !important;
+  color: var(--neon-yellow) !important;
   text-shadow:
-    0 0 6px rgba(255,79,163,0.8),
-    0 0 18px rgba(255,79,163,0.4);
+    0 0 5px rgba(255,216,77,0.8);
 }
 
 /* Custom underline for links */
