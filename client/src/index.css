@@ -208,9 +208,9 @@ html {
   }
 }
 
-/* Hero title — pink neon sign glitch flicker */
+/* Hero title — pink neon sign glitch: one barely-there fault per cycle */
 @keyframes hero-neon-flicker {
-  0%, 100% {
+  0%, 14%, 15%, 100% {
     color: #ffffff;
     text-shadow:
       0 0 6px #ffffff,
@@ -219,34 +219,12 @@ html {
       0 0 48px #ff008c,
       0 0 80px #ff008c;
   }
-  18%, 22% {
-    color: #ffbde3;
+  14.4% {
+    color: #fff0f8;
     text-shadow:
-      0 0 2px #ffbde3,
-      0 0 6px #ff4da6;
-  }
-  19% {
-    color: #ffffff;
-    text-shadow:
-      0 0 6px #ffffff,
-      0 0 14px #ff71c8,
-      0 0 28px #ff2fa4,
-      0 0 55px #ff008c,
-      0 0 90px #ff008c;
-  }
-  53%, 57% {
-    color: #ffbde3;
-    text-shadow:
-      0 0 1px #ffbde3;
-  }
-  55% {
-    color: #ffffff;
-    text-shadow:
-      0 0 6px #ffffff,
-      0 0 12px #ff71c8,
-      0 0 24px #ff2fa4,
-      0 0 48px #ff008c,
-      0 0 80px #ff008c;
+      0 0 4px #fff0f8,
+      0 0 9px #ff71c8,
+      0 0 18px #ff2fa4;
   }
 }
 
