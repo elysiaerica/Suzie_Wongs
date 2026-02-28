@@ -1,0 +1,262 @@
+Implement the FINAL Suzie Wong’s website visual system exactly as follows. These instructions replace all previous colour, font, and glow settings.
+
+Do not improvise. Do not substitute fonts or colours.
+
+This version recreates the real venue lighting while preserving brand recognition.
+
+---
+
+# 1. IMPORT FONTS
+
+Add to HTML <head>:
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+Then upload this font file into:
+
+/public/fonts/Beon-Regular.ttf
+
+---
+
+# 2. ADD FONT FACE
+
+In style.css:
+
+@font-face {
+font-family: 'Beon';
+src: url('/public/fonts/Beon-Regular.ttf') format('truetype');
+}
+
+---
+
+# 3. ROOT COLOURS
+
+Add to :root:
+
+:root {
+
+/* Pink neon /
+--neon-pink-core: #ffffff;
+--neon-pink-mid: #ff4da6;
+--neon-pink-glow: #ff009d;
+
+/ Rust neon tagline /
+--neon-rust-core: #fff3e8;
+--neon-rust-mid: #ec935d;
+--neon-rust-glow: #d3491a;
+
+/ Brand yellow /
+--suzie-yellow: #ffd21f;
+
+/ Warm white neon /
+--neon-white: #fff3e8;
+
+}
+
+---
+
+# 4. HEADER LOGO (FLAT YELLOW — NO GLOW)
+
+.header-logo {
+
+font-family: 'Luckiest Guy', cursive;
+
+color: var(--suzie-yellow);
+
+letter-spacing: 0.04em;
+
+text-shadow:
+0 1px 0 rgba(0,0,0,0.4);
+
+}
+
+---
+
+# 5. HERO TITLE STRUCTURE
+
+HTML structure:
+
+<h1 class="hero-title">
+
+<span class="hero-title-suzie">SUZIE</span>
+<span class="hero-title-wongs">WONG'S</span>
+
+</h1>
+
+---
+
+# 6. HERO TITLE — SUZIE (WARM WHITE NEON)
+
+.hero-title-suzie {
+
+font-family: 'Montserrat', sans-serif;
+
+font-weight: 900;
+
+color: var(--neon-white);
+
+text-shadow:
+
+0 0 6px rgba(255,210,160,0.35),
+0 0 18px rgba(255,160,120,0.15);
+
+}
+
+---
+
+# 7. HERO TITLE — WONG'S (TRUE PINK NEON)
+
+.hero-title-wongs {
+
+font-family: 'Montserrat', sans-serif;
+
+font-weight: 900;
+
+color: var(--neon-pink-core);
+
+text-shadow:
+
+/ white core /
+0 0 4px #ffffff,
+
+/ tube colour /
+0 0 10px var(--neon-pink-mid),
+0 0 20px var(--neon-pink-mid),
+
+/ glow /
+0 0 40px var(--neon-pink-glow),
+0 0 80px var(--neon-pink-glow),
+0 0 120px var(--neon-pink-glow);
+
+animation: neon-flicker 6s infinite;
+
+}
+
+---
+
+# 8. HERO TAGLINE (RUST NEON — BEON FONT)
+
+HTML:
+
+<h3 class="hero-tagline">
+Life is too short to drink responsibly
+</h3>
+
+CSS:
+
+.hero-tagline {
+
+font-family: 'Beon', cursive;
+
+color: var(--neon-rust-core);
+
+text-shadow:
+
+/ hot centre /
+0 0 4px var(--neon-rust-core),
+
+/ tube /
+0 0 12px var(--neon-rust-mid),
+0 0 24px var(--neon-rust-mid),
+
+/ glow */
+0 0 50px var(--neon-rust-glow),
+0 0 90px var(--neon-rust-glow),
+0 0 140px var(--neon-rust-glow);
+
+animation: rust-flicker 7s infinite;
+
+}
+
+---
+
+# 9. PRIMARY BUTTONS — BRAND YELLOW
+
+.btn-primary {
+
+background: var(--suzie-yellow);
+
+color: black;
+
+box-shadow:
+
+0 0 15px rgba(255,210,31,0.6),
+0 0 35px rgba(255,210,31,0.4);
+
+}
+
+.btn-primary:hover {
+
+box-shadow:
+
+0 0 25px rgba(255,210,31,0.9),
+0 0 60px rgba(255,210,31,0.7);
+
+}
+
+---
+
+# 10. NAV HOVER — BRAND YELLOW
+
+.nav-link:hover {
+
+color: var(--suzie-yellow);
+
+text-shadow:
+0 0 10px rgba(255,210,31,0.6);
+
+}
+
+---
+
+# 11. NEON FLICKER ANIMATIONS
+
+Add:
+
+@keyframes neon-flicker {
+
+0%,18%,22%,25%,53%,57%,100% {
+opacity:1;
+}
+
+20%,24%,55% {
+opacity:0.85;
+}
+
+}
+
+@keyframes rust-flicker {
+
+0%,48%,100% {
+opacity:1;
+}
+
+49% {
+opacity:0.75;
+}
+
+}
+
+---
+
+# FINAL DESIGN RULES
+
+Do NOT change these assignments:
+
+Header logo → flat brand yellow  
+SUZIE → warm white neon  
+WONG'S → pink neon  
+Tagline → rust neon (Beon font)  
+Buttons → brand yellow  
+Accents → yellow  
+Only neon colours are pink and rust  
+
+Yellow is NOT used as neon.
+
+Yellow is brand identity only.
+
+---
+
+This completes the Suzie Wong’s authentic lighting recreation.
+
+No further colour or font changes should be made.

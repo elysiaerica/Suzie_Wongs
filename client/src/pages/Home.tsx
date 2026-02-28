@@ -114,18 +114,14 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Main title — font-weight 800 */}
+          {/* Main title */}
           <h1
             className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none mb-4 fade-in-up"
-            style={{
-              animationDelay: "100ms",
-              fontWeight: 800,
-            }}
+            style={{ animationDelay: "100ms" }}
             data-testid="text-hero-title"
           >
-            <span className="hero-title-yellow">Suzie</span>
-            <br />
-            <span className="neon-pink neon-flicker">Wong's</span>
+            <span className="hero-title-suzie block">Suzie</span>
+            <span className="hero-title-wongs block">Wong's</span>
           </h1>
 
           {/* Subtitle */}
@@ -138,11 +134,8 @@ export default function Home() {
 
           {/* Tagline */}
           <p
-            className="hero-quote text-2xl sm:text-3xl md:text-4xl mb-10 fade-in-up"
-            style={{
-              animationDelay: "300ms",
-              fontFamily: "Dancing Script, cursive",
-            }}
+            className="hero-tagline text-2xl sm:text-3xl md:text-4xl mb-10 fade-in-up"
+            style={{ animationDelay: "300ms" }}
           >
             "Life is too short to drink responsibly"
           </p>

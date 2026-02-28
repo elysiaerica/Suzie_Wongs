@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Beon';
+  src: url('/fonts/Beon-Regular.ttf') format('truetype');
+}
+
 /* ALWAYS DARK — This is a nightlife venue. No light mode. */
 :root {
   --button-outline: rgba(255,255,255, .12);
@@ -95,6 +100,16 @@
   --logo-text: #FFE6F2;
   --secondary-glow: #FF8CC8;
 
+  /* Final lighting system */
+  --neon-pink-core: #ffffff;
+  --neon-pink-mid: #ff4da6;
+  --neon-pink-glow: #ff009d;
+  --neon-rust-core: #fff3e8;
+  --neon-rust-mid: #ec935d;
+  --neon-rust-glow: #d3491a;
+  --suzie-yellow: #ffd21f;
+  --neon-white: #fff3e8;
+
   /* Button borders */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
@@ -178,18 +193,22 @@ html {
   border-color: var(--neon-green) !important;
 }
 
-/* Flickering neon animation */
+/* Flickering neon animations */
 @keyframes neon-flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow:
-      0 0 7px var(--neon-pink),
-      0 0 14px var(--neon-pink),
-      0 0 28px var(--secondary-glow),
-      0 0 56px #FF4FA340;
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
   }
   20%, 24%, 55% {
-    text-shadow: none;
-    color: rgba(255, 79, 163, 0.55);
+    opacity: 0.85;
+  }
+}
+
+@keyframes rust-flicker {
+  0%, 48%, 100% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 0.75;
   }
 }
 
@@ -274,30 +293,73 @@ body::after {
     0 0 16px rgba(255,79,163,0.3);
 }
 
-/* Yellow identity system — Yellow = brand, Pink = action */
-.hero-title-yellow {
-  color: var(--brand-yellow);
+/* SUZIE — warm white neon tubing */
+.hero-title-suzie {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: var(--neon-white);
   text-shadow:
-    0 0 4px rgba(255,212,0,0.8),
-    0 0 12px rgba(255,212,0,0.6),
-    0 0 24px rgba(255,212,0,0.35);
+    0 0 6px rgba(255,210,160,0.35),
+    0 0 18px rgba(255,160,120,0.15);
+}
+
+/* WONG'S — true pink neon */
+.hero-title-wongs {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: var(--neon-pink-core);
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 10px var(--neon-pink-mid),
+    0 0 20px var(--neon-pink-mid),
+    0 0 40px var(--neon-pink-glow),
+    0 0 80px var(--neon-pink-glow),
+    0 0 120px var(--neon-pink-glow);
+  animation: neon-flicker 6s infinite;
+}
+
+/* Kept for backwards compat — same as hero-title-suzie */
+.hero-title-yellow {
+  color: var(--neon-white);
+  text-shadow:
+    0 0 6px rgba(255,210,160,0.35),
+    0 0 18px rgba(255,160,120,0.15);
 }
 
 .hero-accent {
-  color: var(--brand-yellow);
+  color: var(--suzie-yellow);
   text-shadow:
-    0 0 4px rgba(255,212,0,0.8),
-    0 0 12px rgba(255,212,0,0.6),
-    0 0 24px rgba(255,212,0,0.35);
+    0 0 4px rgba(255,210,31,0.8),
+    0 0 12px rgba(255,210,31,0.6),
+    0 0 24px rgba(255,210,31,0.35);
 }
 
-.hero-quote {
-  color: #FFF6F2;
+/* Tagline — rust neon sign (Beon font) */
+.hero-tagline {
+  font-family: 'Beon', 'Dancing Script', cursive;
+  color: var(--neon-rust-core);
   text-shadow:
-    0 0 5px rgba(195,58,12,1),
-    0 0 14px rgba(185,48,8,0.85),
-    0 0 30px rgba(175,38,4,0.55),
-    0 0 60px rgba(155,28,0,0.25);
+    0 0 4px var(--neon-rust-core),
+    0 0 12px var(--neon-rust-mid),
+    0 0 24px var(--neon-rust-mid),
+    0 0 50px var(--neon-rust-glow),
+    0 0 90px var(--neon-rust-glow),
+    0 0 140px var(--neon-rust-glow);
+  animation: rust-flicker 7s infinite;
+}
+
+/* Kept for backwards compat */
+.hero-quote {
+  color: var(--neon-rust-core);
+  font-family: 'Beon', 'Dancing Script', cursive;
+  text-shadow:
+    0 0 4px var(--neon-rust-core),
+    0 0 12px var(--neon-rust-mid),
+    0 0 24px var(--neon-rust-mid),
+    0 0 50px var(--neon-rust-glow),
+    0 0 90px var(--neon-rust-glow),
+    0 0 140px var(--neon-rust-glow);
+  animation: rust-flicker 7s infinite;
 }
 
 .section-highlight {
@@ -309,19 +371,27 @@ body::after {
 
 /* Primary CTA button — brand yellow, dark text */
 .primary-btn {
-  background: var(--brand-yellow) !important;
-  color: #111 !important;
+  background: var(--suzie-yellow) !important;
+  color: #000 !important;
   box-shadow:
-    0 0 10px rgba(255,212,0,0.6),
-    0 0 25px rgba(255,212,0,0.35) !important;
+    0 0 15px rgba(255,210,31,0.6),
+    0 0 35px rgba(255,210,31,0.4) !important;
   transition: all 0.25s ease !important;
 }
 
 .primary-btn:hover {
   box-shadow:
-    0 0 18px rgba(255,212,0,0.8),
-    0 0 40px rgba(255,212,0,0.45) !important;
+    0 0 25px rgba(255,210,31,0.9),
+    0 0 60px rgba(255,210,31,0.7) !important;
   transform: translateY(-1px);
+}
+
+/* Header logo — Luckiest Guy, flat brand yellow */
+.header-logo {
+  font-family: 'Luckiest Guy', cursive;
+  color: var(--suzie-yellow);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
 /* Review cards */
@@ -462,9 +532,9 @@ body::after {
 
 /* Nav hover neon glow — brand yellow */
 .nav-hover-glow:hover {
-  color: var(--brand-yellow) !important;
+  color: var(--suzie-yellow) !important;
   text-shadow:
-    0 0 8px rgba(255,212,0,0.7);
+    0 0 10px rgba(255,210,31,0.6);
 }
 
 /* Custom underline for links */

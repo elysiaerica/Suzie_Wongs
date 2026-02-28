@@ -54,8 +54,7 @@ export default function Navigation() {
                 <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50 group-hover:text-white/70 transition-colors">
                   Suzie Wong's
                 </span>
-                <span className="text-lg md:text-xl font-black uppercase tracking-tight transition-all duration-300"
-                  style={{ fontFamily: "Montserrat, sans-serif", color: "var(--logo-text)" }}>
+                <span className="header-logo text-lg md:text-xl uppercase transition-all duration-300">
                   Good Time Bar
                 </span>
               </div>
