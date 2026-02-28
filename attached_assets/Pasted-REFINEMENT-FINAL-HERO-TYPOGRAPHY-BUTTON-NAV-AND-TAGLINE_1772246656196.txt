@@ -1,0 +1,190 @@
+REFINEMENT — FINAL HERO TYPOGRAPHY, BUTTON, NAV, AND TAGLINE FIXES  
+(Replace previous hero font and neon styling completely with this version)
+
+OBJECTIVE:  
+Make the hero section perfectly match Suzie Wong’s real-world signage using the correct fonts and true neon colour behaviour.
+
+––––––––––––––––––  
+STEP 1 — Upload fonts  
+––––––––––––––––––  
+
+Download and upload these two font files into:
+
+public/fonts/
+
+Files:
+
+monograph.ttf  
+valen-valentine-script.ttf
+
+Final structure:
+
+public/fonts/monograph.ttf  
+public/fonts/valen-valentine-script.ttf
+
+––––––––––––––––––  
+STEP 2 — Add font declarations to CSS  
+––––––––––––––––––  
+
+Add at top of main CSS file:
+
+@font-face {
+font-family: 'SuzieDisplay';
+src: url('/fonts/monograph.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'SuzieScript';
+src: url('/fonts/valen-valentine-script.ttf') format('truetype');
+}
+
+––––––––––––––––––  
+STEP 3 — HERO TITLE (SUZIE WONG’S) — Pink Neon  
+––––––––––––––––––  
+
+Replace hero title styling with:
+
+.hero-title {
+
+font-family: 'SuzieDisplay', sans-serif;
+
+color: #ffffff;
+
+letter-spacing: 2px;
+
+text-shadow:
+
+0 0 6px #ffffff,
+0 0 12px #ff71c8,
+0 0 24px #ff2fa4,
+0 0 48px #ff008c,
+0 0 80px #ff008c;
+
+}
+
+This creates:
+
+white core  
+light pink mid glow  
+deep pink outer glow  
+
+matching real sign.
+
+––––––––––––––––––  
+STEP 4 — TAGLINE — Rust Neon Script  
+––––––––––––––––––  
+
+Replace tagline styling with:
+
+.hero-tagline {
+
+font-family: 'SuzieScript', cursive !important;
+
+color: #fff3e8;
+
+font-size: 28px;
+
+letter-spacing: 1px;
+
+text-shadow:
+
+0 0 4px #fff3e8,
+0 0 10px #ec935d,
+0 0 22px #ec935d,
+0 0 40px #d3491a,
+0 0 80px #d3491a;
+
+}
+
+This creates:
+
+white centre  
+yellow-white inner glow  
+rust red outer glow  
+
+matching real neon sign.
+
+––––––––––––––––––  
+STEP 5 — FIX NAV LOGO COLOUR ORDER  
+––––––––––––––––––  
+
+Correct nav branding:
+
+SUZIE WONG’S = yellow  
+GOOD TIME BAR = white
+
+.nav-logo-main {
+
+font-family: 'SuzieDisplay';
+
+color: #ffd54a;
+
+}
+
+.nav-logo-sub {
+
+color: #ffffff;
+
+}
+
+––––––––––––––––––  
+STEP 6 — FIX PRIMARY BUTTON — White Neon Style  
+––––––––––––––––––  
+
+Replace yellow button styling completely:
+
+.primary-button {
+
+background: #ffffff;
+
+color: #111;
+
+border: 2px solid #ffd54a;
+
+box-shadow:
+
+0 0 6px #ffffff,
+0 0 12px #ffd54a,
+0 0 24px #ffd54a,
+0 0 40px #ffb300;
+
+}
+
+.primary-button:hover {
+
+box-shadow:
+
+0 0 8px #ffffff,
+0 0 18px #ffd54a,
+0 0 36px #ffd54a,
+0 0 60px #ffb300;
+
+}
+
+This keeps yellow branding but makes it feel neon, not flat.
+
+––––––––––––––––––  
+STEP 7 — REMOVE OLD FONT REFERENCES  
+––––––––––––––––––  
+
+Remove ALL references to:
+
+Luckiest Guy  
+Beon  
+Monoton  
+Neon  
+any previous script fonts
+
+These conflict.
+
+––––––––––––––––––  
+
+FINAL RESULT:
+
+Hero title matches pink neon sign  
+Tagline matches rust neon script sign  
+Navigation branding matches real venue  
+Buttons match brand while remaining premium  
+Typography hierarchy is correct  
+
+End refinement.

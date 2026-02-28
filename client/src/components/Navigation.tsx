@@ -50,11 +50,11 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" data-testid="link-logo">
-              <div className="flex flex-col leading-none cursor-pointer group">
-                <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50 group-hover:text-white/70 transition-colors">
+              <div className="flex flex-col leading-none cursor-pointer">
+                <span className="nav-logo-main text-base md:text-lg uppercase tracking-wide transition-all duration-300">
                   Suzie Wong's
                 </span>
-                <span className="header-logo text-lg md:text-xl uppercase transition-all duration-300">
+                <span className="nav-logo-sub text-xs font-bold tracking-[0.3em] uppercase opacity-70 transition-all duration-300">
                   Good Time Bar
                 </span>
               </div>
@@ -112,8 +112,8 @@ export default function Navigation() {
       >
         <div className="flex items-center justify-between h-16 px-4 border-b border-white/5">
           <div className="flex flex-col leading-none">
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50">Suzie Wong's</span>
-            <span className="text-xl font-black uppercase tracking-tight text-white">Good Time Bar</span>
+            <span className="nav-logo-main text-base uppercase tracking-wide">Suzie Wong's</span>
+            <span className="nav-logo-sub text-xs font-bold tracking-[0.3em] uppercase opacity-70">Good Time Bar</span>
           </div>
           <button
             className="text-white p-2"

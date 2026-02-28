@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Beon';
-  src: url('/fonts/Beon-Regular.ttf') format('truetype');
+  font-family: 'SuzieDisplay';
+  src: url('/fonts/monograph.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SuzieScript';
+  src: url('/fonts/valen-valentine-script.ttf') format('opentype');
 }
 
 /* ALWAYS DARK — This is a nightlife venue. No light mode. */
@@ -293,72 +298,68 @@ body::after {
     0 0 16px rgba(255,79,163,0.3);
 }
 
-/* SUZIE — warm white neon tubing */
-.hero-title-suzie {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  color: var(--neon-white);
+/* SUZIE WONG'S — unified pink neon sign (SuzieDisplay font) */
+.hero-title {
+  font-family: 'SuzieDisplay', sans-serif;
+  color: #ffffff;
+  letter-spacing: 2px;
   text-shadow:
-    0 0 6px rgba(255,210,160,0.35),
-    0 0 18px rgba(255,160,120,0.15);
+    0 0 6px #ffffff,
+    0 0 12px #ff71c8,
+    0 0 24px #ff2fa4,
+    0 0 48px #ff008c,
+    0 0 80px #ff008c;
 }
 
-/* WONG'S — true pink neon */
-.hero-title-wongs {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  color: var(--neon-pink-core);
-  text-shadow:
-    0 0 4px #ffffff,
-    0 0 10px var(--neon-pink-mid),
-    0 0 20px var(--neon-pink-mid),
-    0 0 40px var(--neon-pink-glow),
-    0 0 80px var(--neon-pink-glow),
-    0 0 120px var(--neon-pink-glow);
-  animation: neon-flicker 6s infinite;
-}
-
-/* Kept for backwards compat — same as hero-title-suzie */
+/* Backwards compat aliases — same pink neon */
+.hero-title-suzie,
+.hero-title-wongs,
 .hero-title-yellow {
-  color: var(--neon-white);
+  font-family: 'SuzieDisplay', sans-serif;
+  color: #ffffff;
+  letter-spacing: 2px;
   text-shadow:
-    0 0 6px rgba(255,210,160,0.35),
-    0 0 18px rgba(255,160,120,0.15);
+    0 0 6px #ffffff,
+    0 0 12px #ff71c8,
+    0 0 24px #ff2fa4,
+    0 0 48px #ff008c,
+    0 0 80px #ff008c;
 }
 
 .hero-accent {
   color: var(--suzie-yellow);
   text-shadow:
-    0 0 4px rgba(255,210,31,0.8),
-    0 0 12px rgba(255,210,31,0.6),
-    0 0 24px rgba(255,210,31,0.35);
+    0 0 4px rgba(255,213,74,0.8),
+    0 0 12px rgba(255,213,74,0.6),
+    0 0 24px rgba(255,213,74,0.35);
 }
 
-/* Tagline — rust neon sign (Beon font) */
+/* Tagline — rust neon script (SuzieScript / Valen Valentine font) */
 .hero-tagline {
-  font-family: 'Beon', 'Dancing Script', cursive;
-  color: var(--neon-rust-core);
+  font-family: 'SuzieScript', cursive !important;
+  color: #fff3e8;
+  font-size: 28px;
+  letter-spacing: 1px;
   text-shadow:
-    0 0 4px var(--neon-rust-core),
-    0 0 12px var(--neon-rust-mid),
-    0 0 24px var(--neon-rust-mid),
-    0 0 50px var(--neon-rust-glow),
-    0 0 90px var(--neon-rust-glow),
-    0 0 140px var(--neon-rust-glow);
+    0 0 4px #fff3e8,
+    0 0 10px #ec935d,
+    0 0 22px #ec935d,
+    0 0 40px #d3491a,
+    0 0 80px #d3491a;
   animation: rust-flicker 7s infinite;
 }
 
-/* Kept for backwards compat */
+/* Backwards compat */
 .hero-quote {
-  color: var(--neon-rust-core);
-  font-family: 'Beon', 'Dancing Script', cursive;
+  font-family: 'SuzieScript', cursive !important;
+  color: #fff3e8;
+  letter-spacing: 1px;
   text-shadow:
-    0 0 4px var(--neon-rust-core),
-    0 0 12px var(--neon-rust-mid),
-    0 0 24px var(--neon-rust-mid),
-    0 0 50px var(--neon-rust-glow),
-    0 0 90px var(--neon-rust-glow),
-    0 0 140px var(--neon-rust-glow);
+    0 0 4px #fff3e8,
+    0 0 10px #ec935d,
+    0 0 22px #ec935d,
+    0 0 40px #d3491a,
+    0 0 80px #d3491a;
   animation: rust-flicker 7s infinite;
 }
 
@@ -369,29 +370,36 @@ body::after {
     0 0 16px rgba(255,212,0,0.35);
 }
 
-/* Primary CTA button — brand yellow, dark text */
+/* Primary CTA button — white neon with yellow glow */
 .primary-btn {
-  background: var(--suzie-yellow) !important;
-  color: #000 !important;
+  background: #ffffff !important;
+  color: #111 !important;
+  border: 2px solid #ffd54a !important;
   box-shadow:
-    0 0 15px rgba(255,210,31,0.6),
-    0 0 35px rgba(255,210,31,0.4) !important;
+    0 0 6px #ffffff,
+    0 0 12px #ffd54a,
+    0 0 24px #ffd54a,
+    0 0 40px #ffb300 !important;
   transition: all 0.25s ease !important;
 }
 
 .primary-btn:hover {
   box-shadow:
-    0 0 25px rgba(255,210,31,0.9),
-    0 0 60px rgba(255,210,31,0.7) !important;
+    0 0 8px #ffffff,
+    0 0 18px #ffd54a,
+    0 0 36px #ffd54a,
+    0 0 60px #ffb300 !important;
   transform: translateY(-1px);
 }
 
-/* Header logo — Luckiest Guy, flat brand yellow */
-.header-logo {
-  font-family: 'Luckiest Guy', cursive;
-  color: var(--suzie-yellow);
-  letter-spacing: 0.04em;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+/* Nav logo — SUZIE WONG'S = yellow SuzieDisplay, GOOD TIME BAR = white */
+.nav-logo-main {
+  font-family: 'SuzieDisplay', sans-serif;
+  color: #ffd54a;
+}
+
+.nav-logo-sub {
+  color: #ffffff;
 }
 
 /* Review cards */

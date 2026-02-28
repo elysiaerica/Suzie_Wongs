@@ -116,12 +116,11 @@ export default function Home() {
 
           {/* Main title */}
           <h1
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none mb-4 fade-in-up"
+            className="hero-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase leading-none mb-4 fade-in-up"
             style={{ animationDelay: "100ms" }}
             data-testid="text-hero-title"
           >
-            <span className="hero-title-suzie block">Suzie</span>
-            <span className="hero-title-wongs block">Wong's</span>
+            Suzie Wong's
           </h1>
 
           {/* Subtitle */}
