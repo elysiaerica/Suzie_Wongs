@@ -27,7 +27,7 @@ export default function Footer() {
               <div className="text-2xl font-black uppercase tracking-tight text-white">Good Time Bar</div>
             </div>
             <p
-              className="text-sm leading-relaxed text-white/40 mb-4"
+              className="footer-quote text-sm leading-relaxed mb-4"
               style={{ fontFamily: "Dancing Script, cursive", fontSize: "1.1rem" }}
             >
               "life is too short<br />to drink responsibly"
@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://www.instagram.com/suziewongsgoodtimebar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50 hover-elevate transition-colors hover:text-white hover:border-white/30"
+                className="social-icon w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50"
                 data-testid="link-instagram"
                 aria-label="Instagram"
               >
@@ -47,7 +47,7 @@ export default function Footer() {
                 href="https://www.facebook.com/suziewongsgoodtimebar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50 hover-elevate transition-colors hover:text-white hover:border-white/30"
+                className="social-icon w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50"
                 data-testid="link-facebook"
                 aria-label="Facebook"
               >
@@ -57,7 +57,7 @@ export default function Footer() {
                 href="https://www.suziewongsgoodtimebar.com.au"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50 hover-elevate transition-colors hover:text-white hover:border-white/30"
+                className="social-icon w-9 h-9 rounded-md border border-white/10 flex items-center justify-center text-white/50"
                 data-testid="link-website"
                 aria-label="Website"
               >
@@ -94,17 +94,17 @@ export default function Footer() {
             <h3 className="text-xs font-bold tracking-[0.25em] uppercase text-white/30 mb-4">Opening Hours</h3>
             <ul className="space-y-2 text-sm">
               {[
-                { day: "Monday", hours: "Closed" },
-                { day: "Tuesday", hours: "4pm – Late" },
-                { day: "Wednesday", hours: "4pm – Late" },
-                { day: "Thursday", hours: "4pm – 3am" },
-                { day: "Friday", hours: "2pm – 3am" },
-                { day: "Saturday", hours: "2pm – 3am" },
-                { day: "Sunday", hours: "2pm – Late" },
-              ].map(({ day, hours }) => (
+                { day: "Monday", hours: "Closed", open: false },
+                { day: "Tuesday", hours: "4pm – Late", open: true },
+                { day: "Wednesday", hours: "4pm – Late", open: true },
+                { day: "Thursday", hours: "4pm – 3am", open: true },
+                { day: "Friday", hours: "2pm – 3am", open: true },
+                { day: "Saturday", hours: "2pm – 3am", open: true },
+                { day: "Sunday", hours: "2pm – Late", open: true },
+              ].map(({ day, hours, open }) => (
                 <li key={day} className="flex justify-between gap-4">
-                  <span className="text-white/40">{day}</span>
-                  <span className={hours === "Closed" ? "text-white/25" : "text-white/70"}>{hours}</span>
+                  <span className="opening-day">{day}</span>
+                  <span className={`opening-time${open ? "" : " closed"}`}>{hours}</span>
                 </li>
               ))}
             </ul>

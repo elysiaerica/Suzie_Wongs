@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Calendar, Music, Users, ChevronDown, Star } from "lucide-react";
+import imgHero from "@assets/IMG_0419_1772238291426.jpeg";
 import img429 from "@assets/IMG_0429_1772233759717.jpeg";
 import img428 from "@assets/IMG_0428_1772233759717.jpeg";
 import img425 from "@assets/IMG_0425_1772233759717.jpeg";
@@ -9,7 +10,6 @@ import img424 from "@assets/IMG_0424_1772233759717.jpeg";
 import img423 from "@assets/IMG_0423_1772233759717.jpeg";
 import img422 from "@assets/IMG_0422_1772233759717.jpeg";
 import img420 from "@assets/IMG_0420_1772233759717.jpeg";
-import img419 from "@assets/IMG_0419_1772233759718.jpeg";
 import img416 from "@assets/IMG_0416_1772233759718.jpeg";
 
 const upcomingEvents = [
@@ -81,33 +81,46 @@ export default function Home() {
     <div>
       {/* HERO */}
       <section
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
+        className="hero relative min-h-screen flex flex-col items-center justify-end overflow-hidden grain-overlay"
         data-testid="section-hero"
       >
-        {/* Background image */}
+        {/* Background image — positioned so neon sign sits in lower half */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${img429})` }}
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: `url(${imgHero})`,
+            backgroundPosition: "center 20%",
+          }}
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/55" />
-        {/* Colour wash - red light ambiance */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(140,10,10,0.25) 0%, rgba(0,0,0,0) 60%)" }} />
+        {/* Strong dark overlay on top third, lighter in middle (where neon is) */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(11,11,15,0.75) 0%, rgba(11,11,15,0.30) 35%, rgba(11,11,15,0.50) 60%, rgba(11,11,15,0.92) 100%)"
+          }}
+        />
         {/* Bottom fade to page background */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-background to-transparent" />
 
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
+        {/* Content sits in lower half */}
+        <div className="hero-content text-center px-4 sm:px-6 max-w-5xl mx-auto w-full pb-24 md:pb-28">
           {/* Pre-title */}
-          <div className="mb-6 fade-in-up" style={{ animationDelay: "0ms" }}>
-            <span className="inline-block text-xs font-bold tracking-[0.4em] uppercase text-white/50 border border-white/10 px-4 py-1.5 rounded-sm">
+          <div className="mb-5 fade-in-up" style={{ animationDelay: "0ms" }}>
+            <span className="inline-block text-xs font-bold tracking-[0.4em] uppercase border border-white/15 px-4 py-1.5 rounded-sm"
+              style={{ color: "var(--logo-text)", backgroundColor: "rgba(11,11,15,0.4)" }}>
               Fortitude Valley, Brisbane
             </span>
           </div>
 
-          {/* Main title */}
+          {/* Main title — font-weight 800 (10% lighter than 900) */}
           <h1
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white leading-none mb-4 fade-in-up"
-            style={{ animationDelay: "100ms", textShadow: "0 4px 40px rgba(0,0,0,0.5)" }}
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none mb-4 fade-in-up"
+            style={{
+              animationDelay: "100ms",
+              fontWeight: 800,
+              color: "var(--logo-text)",
+              textShadow: "0 2px 30px rgba(0,0,0,0.7)"
+            }}
             data-testid="text-hero-title"
           >
             Suzie
@@ -117,19 +130,20 @@ export default function Home() {
 
           {/* Subtitle */}
           <div
-            className="text-lg sm:text-2xl font-bold uppercase tracking-[0.3em] text-white/80 mb-6 fade-in-up"
-            style={{ animationDelay: "200ms" }}
+            className="text-lg sm:text-2xl font-bold uppercase tracking-[0.3em] mb-6 fade-in-up"
+            style={{ animationDelay: "200ms", color: "var(--logo-text)", opacity: 0.75 }}
           >
             Good Time Bar
           </div>
 
           {/* Tagline */}
           <p
-            className="text-2xl sm:text-3xl md:text-4xl text-white/90 mb-10 fade-in-up"
+            className="text-2xl sm:text-3xl md:text-4xl mb-10 fade-in-up"
             style={{
               animationDelay: "300ms",
               fontFamily: "Dancing Script, cursive",
-              textShadow: "0 2px 20px rgba(0,0,0,0.8)"
+              color: "var(--neon-amber)",
+              textShadow: "0 0 8px var(--neon-amber), 0 0 20px #FFD84D50, 0 2px 20px rgba(0,0,0,0.9)"
             }}
           >
             "Life is too short to drink responsibly"
@@ -140,7 +154,7 @@ export default function Home() {
             <Link href="/whats-on">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-primary text-white font-bold uppercase tracking-widest text-sm px-8 h-12"
+                className="primary-btn w-full sm:w-auto font-bold uppercase tracking-widest text-sm px-8 h-12"
                 data-testid="button-view-whats-on"
               >
                 <Calendar className="mr-2 w-4 h-4" />
@@ -151,7 +165,8 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-white/30 text-white font-bold uppercase tracking-widest text-sm px-8 h-12 bg-white/5 backdrop-blur-sm"
+                className="w-full sm:w-auto border-white/30 font-bold uppercase tracking-widest text-sm px-8 h-12 bg-black/30 backdrop-blur-sm"
+                style={{ color: "var(--logo-text)" }}
                 data-testid="button-book-function"
               >
                 <Users className="mr-2 w-4 h-4" />
@@ -228,7 +243,7 @@ export default function Home() {
               <img src={img420} alt="Live music at Suzie Wong's" className="w-full h-full object-cover" />
             </div>
             <div className="rounded-md overflow-hidden aspect-[3/4] mt-8 img-card">
-              <img src={img419} alt="Band performing at Suzie Wong's" className="w-full h-full object-cover" />
+              <img src={img420} alt="Band performing at Suzie Wong's" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -437,7 +452,7 @@ export default function Home() {
             <Link href="/functions">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-primary text-white font-bold uppercase tracking-widest text-sm px-8 h-12"
+                className="primary-btn w-full sm:w-auto font-bold uppercase tracking-widest text-sm px-8 h-12"
                 data-testid="button-enquire-function"
               >
                 Enquire Now
@@ -484,16 +499,16 @@ export default function Home() {
           ].map((review, i) => (
             <div
               key={i}
-              className="p-6 rounded-md border border-white/5 bg-card fade-in-up"
+              className="review-card p-6 rounded-md border border-white/5 fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
               data-testid={`card-review-${i}`}
             >
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-4 review-stars">
                 {Array.from({ length: review.stars }).map((_, j) => (
-                  <Star key={j} size={14} className="text-neon-amber fill-neon-amber" />
+                  <Star key={j} size={14} className="fill-current" />
                 ))}
               </div>
-              <p className="text-white/70 text-sm leading-relaxed mb-4 italic">"{review.quote}"</p>
+              <p className="text-sm leading-relaxed mb-4 italic" style={{ color: "#A8A8B3" }}>"{review.quote}"</p>
               <p className="text-white/40 text-xs font-bold tracking-widest uppercase">{review.author}</p>
             </div>
           ))}

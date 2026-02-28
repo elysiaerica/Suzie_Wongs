@@ -1,0 +1,209 @@
+Update the Suzie Wong’s website with the following precise UI, typography, and conversion improvements. Do NOT redesign anything else. Only implement the changes below.
+
+---
+
+# 1. HERO IMAGE OVERLAY (increase neon contrast)
+
+Add a radial gradient overlay on the hero section to darken edges and focus attention on the neon sign.
+
+CSS:
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 65%,
+    rgba(11,11,15,0.2) 0%,
+    rgba(11,11,15,0.6) 45%,
+    rgba(11,11,15,0.92) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+---
+
+# 2. STANDARDISE NEON GLOW SYSTEM (apply consistently)
+
+Primary neon glow (identity text only):
+
+.glow-primary {
+  color: #FFE6F2;
+  text-shadow:
+    0 0 8px rgba(255,79,163,0.8),
+    0 0 22px rgba(255,79,163,0.45),
+    0 0 42px rgba(255,79,163,0.25);
+}
+
+Secondary neon glow:
+
+.glow-secondary {
+  text-shadow:
+    0 0 6px rgba(255,79,163,0.6),
+    0 0 16px rgba(255,79,163,0.3);
+}
+
+Use these classes instead of random glow values.
+
+---
+
+# 3. PRIMARY CTA BUTTON (increase visual strength)
+
+Update main CTA buttons (View What’s On, Enquire Now):
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    #FF4FA3 0%,
+    #FF2D8D 100%
+  );
+  box-shadow:
+    0 0 12px rgba(255,79,163,0.6),
+    0 0 28px rgba(255,79,163,0.35);
+  transition: all 0.25s ease;
+}
+
+.primary-btn:hover {
+  box-shadow:
+    0 0 20px rgba(255,79,163,0.8),
+    0 0 40px rgba(255,79,163,0.45);
+  transform: translateY(-1px);
+}
+
+---
+
+# 4. NAVIGATION HOVER EFFECT
+
+.nav a:hover {
+  color: #FF4FA3;
+  text-shadow:
+    0 0 6px rgba(255,79,163,0.8),
+    0 0 18px rgba(255,79,163,0.4);
+}
+
+---
+
+# 5. REVIEW STARS GLOW
+
+.review-stars {
+  color: #FFD84D;
+  text-shadow:
+    0 0 6px rgba(255,216,77,0.8),
+    0 0 14px rgba(255,216,77,0.4);
+}
+
+.review-card {
+  background: #141419;
+}
+
+---
+
+# 6. BODY TEXT HIERARCHY IMPROVEMENT
+
+Update paragraph text colour site-wide:
+
+body p {
+  color: #A8A8B3;
+}
+
+---
+
+# 7. FOOTER NEON QUOTE
+
+.footer-quote {
+  color: #FF8CC8;
+  text-shadow:
+    0 0 8px rgba(255,79,163,0.6),
+    0 0 18px rgba(255,79,163,0.35);
+}
+
+---
+
+# 8. SOCIAL ICON HOVER EFFECT
+
+.social-icon {
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  color: #FF4FA3;
+  box-shadow:
+    0 0 10px rgba(255,79,163,0.6);
+}
+
+---
+
+# 9. OPENING HOURS READABILITY FIX
+
+.opening-day {
+  color: #A8A8B3;
+}
+
+.opening-time {
+  color: #FFFFFF;
+}
+
+---
+
+# 10. ADD STICKY MOBILE CTA
+
+Add fixed bottom mobile CTA button linking to What's On page.
+
+HTML:
+
+<div class="sticky-cta">
+  <a href="/whats-on">WHAT’S ON TONIGHT</a>
+</div>
+
+CSS:
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #FF4FA3;
+  text-align: center;
+  padding: 16px;
+  z-index: 9999;
+  box-shadow: 0 0 20px rgba(255,79,163,0.6);
+}
+
+.sticky-cta a {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .sticky-cta {
+    display: none;
+  }
+}
+
+---
+
+# 11. OPTIONAL PREMIUM POLISH: subtle grain overlay
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/grain.png');
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+---
+
+Do NOT modify layout, spacing, or structure beyond these instructions.
+
+Only implement visual, glow, readability, and CTA improvements listed above.

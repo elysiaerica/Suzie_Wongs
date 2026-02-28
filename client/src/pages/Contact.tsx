@@ -151,8 +151,8 @@ export default function Contact() {
                   { day: "Sunday", hours: "2:00pm – Late", open: true },
                 ].map(({ day, hours, open }) => (
                   <div key={day} className="flex justify-between items-center py-1.5 border-b border-white/[0.04] last:border-0">
-                    <span className="text-sm text-white/50">{day}</span>
-                    <span className={`text-sm font-medium ${open ? "text-white/80" : "text-white/25"}`}>
+                    <span className="text-sm opening-day">{day}</span>
+                    <span className={`text-sm font-medium opening-time${open ? "" : " closed"}`}>
                       {hours}
                     </span>
                   </div>

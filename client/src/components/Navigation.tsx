@@ -54,8 +54,8 @@ export default function Navigation() {
                 <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50 group-hover:text-white/70 transition-colors">
                   Suzie Wong's
                 </span>
-                <span className="text-lg md:text-xl font-black uppercase tracking-tight text-white group-hover:neon-pink transition-all duration-300"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}>
+                <span className="text-lg md:text-xl font-black uppercase tracking-tight transition-all duration-300"
+                  style={{ fontFamily: "Montserrat, sans-serif", color: "var(--logo-text)" }}>
                   Good Time Bar
                 </span>
               </div>
@@ -70,10 +70,10 @@ export default function Navigation() {
                   data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   <span
-                    className={`nav-link text-sm font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
+                    className={`nav-link text-sm font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer nav-hover-glow ${
                       location === link.href
                         ? "text-neon-pink active"
-                        : "text-white/70 hover:text-white"
+                        : "text-white/70"
                     }`}
                   >
                     {link.label}

@@ -75,9 +75,10 @@ export default {
           border: "var(--sidebar-accent-border)",
         },
         neon: {
-          pink: "#FF1F6A",
+          pink: "#FF4FA3",
           green: "#0DFF6E",
-          amber: "#FFB300",
+          amber: "#FFD84D",
+          glow: "#FF8CC8",
         },
       },
       fontFamily: {
