@@ -114,18 +114,16 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Main title — font-weight 800 (10% lighter than 900) */}
+          {/* Main title — font-weight 800 */}
           <h1
             className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none mb-4 fade-in-up"
             style={{
               animationDelay: "100ms",
               fontWeight: 800,
-              color: "var(--logo-text)",
-              textShadow: "0 2px 30px rgba(0,0,0,0.7)"
             }}
             data-testid="text-hero-title"
           >
-            Suzie
+            <span className="hero-title-yellow">Suzie</span>
             <br />
             <span className="neon-pink neon-flicker">Wong's</span>
           </h1>

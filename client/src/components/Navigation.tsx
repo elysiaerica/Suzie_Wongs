@@ -70,7 +70,7 @@ export default function Navigation() {
                   data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   <span
-                    className={`nav-link text-sm font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer hover:text-neon-amber ${
+                    className={`nav-link text-sm font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer hover:text-neon-brand ${
                       location === link.href
                         ? "text-neon-pink active"
                         : "text-white/70"

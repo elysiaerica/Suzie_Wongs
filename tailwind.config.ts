@@ -79,6 +79,7 @@ export default {
           green: "#0DFF6E",
           amber: "#FFD84D",
           glow: "#FF8CC8",
+          brand: "#FFD400",
         },
       },
       fontFamily: {

@@ -91,6 +91,7 @@
   --neon-green: #0DFF6E;
   --neon-amber: #FFD84D;
   --neon-yellow: #FFD84D;
+  --brand-yellow: #FFD400;
   --logo-text: #FFE6F2;
   --secondary-glow: #FF8CC8;
 
@@ -274,42 +275,52 @@ body::after {
 }
 
 /* Yellow identity system — Yellow = brand, Pink = action */
-.hero-accent {
-  color: var(--neon-yellow);
+.hero-title-yellow {
+  color: var(--brand-yellow);
   text-shadow:
-    0 0 4px rgba(255,216,77,0.9),
-    0 0 12px rgba(255,216,77,0.6),
-    0 0 24px rgba(255,216,77,0.35);
+    0 0 4px rgba(255,212,0,0.8),
+    0 0 12px rgba(255,212,0,0.6),
+    0 0 24px rgba(255,212,0,0.35);
+}
+
+.hero-accent {
+  color: var(--brand-yellow);
+  text-shadow:
+    0 0 4px rgba(255,212,0,0.8),
+    0 0 12px rgba(255,212,0,0.6),
+    0 0 24px rgba(255,212,0,0.35);
 }
 
 .hero-quote {
-  color: var(--neon-yellow);
+  color: #FFF6F2;
   text-shadow:
-    0 0 5px rgba(255,216,77,0.8),
-    0 0 18px rgba(255,216,77,0.4);
+    0 0 5px rgba(195,58,12,1),
+    0 0 14px rgba(185,48,8,0.85),
+    0 0 30px rgba(175,38,4,0.55),
+    0 0 60px rgba(155,28,0,0.25);
 }
 
 .section-highlight {
-  color: var(--neon-yellow);
+  color: var(--brand-yellow);
   text-shadow:
-    0 0 6px rgba(255,216,77,0.7),
-    0 0 16px rgba(255,216,77,0.35);
+    0 0 6px rgba(255,212,0,0.7),
+    0 0 16px rgba(255,212,0,0.35);
 }
 
-/* Primary CTA button */
+/* Primary CTA button — brand yellow, dark text */
 .primary-btn {
-  background: linear-gradient(135deg, #FF4FA3 0%, #FF2D8D 100%) !important;
+  background: var(--brand-yellow) !important;
+  color: #111 !important;
   box-shadow:
-    0 0 12px rgba(255,79,163,0.6),
-    0 0 28px rgba(255,79,163,0.35) !important;
+    0 0 10px rgba(255,212,0,0.6),
+    0 0 25px rgba(255,212,0,0.35) !important;
   transition: all 0.25s ease !important;
-  color: #fff !important;
 }
 
 .primary-btn:hover {
   box-shadow:
-    0 0 20px rgba(255,79,163,0.8),
-    0 0 40px rgba(255,79,163,0.45) !important;
+    0 0 18px rgba(255,212,0,0.8),
+    0 0 40px rgba(255,212,0,0.45) !important;
   transform: translateY(-1px);
 }
 
@@ -405,11 +416,11 @@ body::after {
   filter: brightness(1.1);
 }
 
-/* Section divider — yellow per brand hierarchy */
+/* Section divider — brand yellow */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255,216,77,0.5), transparent);
-  box-shadow: 0 0 8px rgba(255,216,77,0.7);
+  background: linear-gradient(to right, transparent, rgba(255,212,0,0.55), transparent);
+  box-shadow: 0 0 8px rgba(255,212,0,0.6);
 }
 
 /* Scrollbar styling */
@@ -449,11 +460,11 @@ body::after {
   transform: translateY(0);
 }
 
-/* Nav hover neon glow — yellow per brand hierarchy */
+/* Nav hover neon glow — brand yellow */
 .nav-hover-glow:hover {
-  color: var(--neon-yellow) !important;
+  color: var(--brand-yellow) !important;
   text-shadow:
-    0 0 5px rgba(255,216,77,0.8);
+    0 0 8px rgba(255,212,0,0.7);
 }
 
 /* Custom underline for links */
