@@ -208,6 +208,48 @@ html {
   }
 }
 
+/* Hero title — pink neon sign glitch flicker */
+@keyframes hero-neon-flicker {
+  0%, 100% {
+    color: #ffffff;
+    text-shadow:
+      0 0 6px #ffffff,
+      0 0 12px #ff71c8,
+      0 0 24px #ff2fa4,
+      0 0 48px #ff008c,
+      0 0 80px #ff008c;
+  }
+  18%, 22% {
+    color: #ffbde3;
+    text-shadow:
+      0 0 2px #ffbde3,
+      0 0 6px #ff4da6;
+  }
+  19% {
+    color: #ffffff;
+    text-shadow:
+      0 0 6px #ffffff,
+      0 0 14px #ff71c8,
+      0 0 28px #ff2fa4,
+      0 0 55px #ff008c,
+      0 0 90px #ff008c;
+  }
+  53%, 57% {
+    color: #ffbde3;
+    text-shadow:
+      0 0 1px #ffbde3;
+  }
+  55% {
+    color: #ffffff;
+    text-shadow:
+      0 0 6px #ffffff,
+      0 0 12px #ff71c8,
+      0 0 24px #ff2fa4,
+      0 0 48px #ff008c,
+      0 0 80px #ff008c;
+  }
+}
+
 @keyframes rust-flicker {
   0%, 48%, 100% {
     opacity: 1;
@@ -309,6 +351,7 @@ body::after {
     0 0 24px #ff2fa4,
     0 0 48px #ff008c,
     0 0 80px #ff008c;
+  animation: hero-neon-flicker 6s infinite;
 }
 
 /* Backwards compat aliases — same pink neon */
