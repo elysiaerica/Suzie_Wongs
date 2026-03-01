@@ -199,7 +199,7 @@ export default function About() {
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto" data-testid="section-stats">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { num: "4-5", label: "Live Music Nights Per Week", sub: "Every week, all year" },
+            { num: "4", label: "Live Music Nights Per Week", sub: "Wed–Sat, all year" },
             { num: "100+", label: "Acts Per Year", sub: "Local & touring artists" },
             { num: "1", label: "Retro Fridge Door", sub: "World's most iconic entrance" },
             { num: "∞", label: "Good Times Had", sub: "And counting" },

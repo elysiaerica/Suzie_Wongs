@@ -198,7 +198,7 @@ export default function Home() {
               Little Stage
             </h2>
             <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 fade-in-up">
-              Four to five nights a week, Suzie Wong's is packed floor-to-ceiling with sweaty bodies, 
+              Wednesday to Saturday every week, Suzie Wong's is packed floor-to-ceiling with sweaty bodies, 
               loud guitars, and people who came here for a quiet drink and stayed until 3am.
             </p>
             <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 fade-in-up">
