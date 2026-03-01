@@ -177,7 +177,7 @@ export default function Home() {
         <div className="flex whitespace-nowrap marquee-track">
           {Array.from({ length: 10 }).map((_, i) => (
             <span key={i} className="text-xs font-black uppercase tracking-[0.3em] mx-8 text-white/90">
-              {i % 5 === 0 ? "Live Music 4–5 Nights" : i % 5 === 1 ? "Fortitude Valley's Best Dive Bar" : i % 5 === 2 ? "So Who The F*ck Is Suzie Wong?" : i % 5 === 3 ? "Enter Through the Fridge Door" : "No Dress Code. Just Vibes."}
+              {i % 5 === 0 ? "Live Music Wed–Sat Every Week" : i % 5 === 1 ? "Fortitude Valley's Best Dive Bar" : i % 5 === 2 ? "So Who The F*ck Is Suzie Wong?" : i % 5 === 3 ? "Enter Through the Fridge Door" : "No Dress Code. Just Vibes."}
             </span>
           ))}
         </div>

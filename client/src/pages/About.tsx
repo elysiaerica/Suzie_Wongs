@@ -144,7 +144,7 @@ export default function About() {
               {
                 num: "05",
                 title: "The Music",
-                desc: "4–5 nights of live music per week. Every genre, every vibe. We've had quiet folk sets and mosh-pit inducing hard rock on the same weekend. The common thread: it's always real.",
+                desc: "4 nights of live music per week, Wednesday to Saturday. Every genre, every vibe. We've had quiet folk sets and mosh-pit inducing hard rock on the same weekend. The common thread: it's always real.",
                 img: img418,
               },
               {
