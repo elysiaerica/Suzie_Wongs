@@ -4,6 +4,7 @@
 
 - Created branch: `launch-options-offer-preview`.
 - Added standalone file: `suzie-launch-options.html`.
+- Added complete static app rebuild: `suzie-wongs-static-site.html`.
 - Added a client-facing launch-options page with two options only:
   - Option 1 - Website Live: `$1,950`
   - Option 2 - Website + Venue Setup: `$3,750`, marked Recommended
@@ -17,6 +18,11 @@
 
 ## Local QA
 
+- Confirmed `suzie-wongs-static-site.html` opens locally with Chrome headless using the local file URL.
+- Confirmed the static app contains Home, What's On, About, Functions, Gallery, and Contact route sections.
+- Confirmed hash routing activates `#gallery` and `#contact` as visible pages.
+- Confirmed Gallery client-side script populates the photo grid from existing assets.
+- Confirmed the static app keeps forms client-only and displays local success messages instead of calling a backend.
 - Confirmed the HTML opens locally with Chrome headless using the local file URL.
 - Confirmed the default selected option is Option 2.
 - Confirmed Option 2 shows `$3,750` and the Recommended badge.

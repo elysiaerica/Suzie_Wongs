@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suzie Wong's Good Time Bar</title>
+  <style>
+    @font-face {
+      font-family: "SuzieDisplay";
+      src: url("client/public/fonts/monograph.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "SuzieScript";
+      src: url("client/public/fonts/valen-valentine-script.ttf") format("truetype");
+    }
+
+    :root {
+      --bg: #0b0b0f;
+      --card: #141419;
+      --muted: #a8a8b3;
+      --line: rgba(255,255,255,.08);
+      --pink: #ff4fa3;
+      --pink-soft: #ff8cc8;
+      --yellow: #ffd84d;
+      --green: #0dff6e;
+      --cream: #fff3e8;
+      --text: #fff6fb;
+    }
+
+    * { box-sizing: border-box; }
+    html { color-scheme: dark; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Montserrat, Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(0,0,0,.92);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      max-width: 1240px;
+      min-height: 76px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-main {
+      font-family: "SuzieDisplay", Impact, sans-serif;
+      color: var(--yellow);
+      font-size: 21px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255,216,77,.45);
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      color: rgba(255,255,255,.72);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      position: relative;
+      border: 0;
+      background: none;
+      color: rgba(255,255,255,.68);
+      padding: 10px 0;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 3px;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      box-shadow: 0 0 8px var(--pink);
+      transition: width .2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active { color: #fff; }
+    .nav-link.active::after,
+    .nav-link:hover::after { width: 100%; }
+
+    .menu-toggle { display: none; }
+
+    .nav-cta,
+    .primary-btn {
+      border: 2px solid var(--yellow);
+      border-radius: 4px;
+      background: #fff;
+      color: #111;
+      box-shadow: 0 0 6px #fff, 0 0 12px var(--yellow), 0 0 24px var(--yellow), 0 0 40px #ffb300;
+      padding: 13px 18px;
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-cta:hover,
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 8px #fff, 0 0 18px var(--yellow), 0 0 36px var(--yellow), 0 0 60px #ffb300;
+    }
+
+    .outline-btn {
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 4px;
+      background: rgba(0,0,0,.28);
+      color: var(--cream);
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: border-color .2s ease, color .2s ease, background .2s ease;
+    }
+
+    .outline-btn:hover {
+      border-color: rgba(255,79,163,.58);
+      color: #fff;
+      background: rgba(255,79,163,.08);
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-inline: 22px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+      background: url("attached_assets/IMG_0419_1772238291426.jpeg") center 20% / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 65%, rgba(11,11,15,.18), rgba(11,11,15,.9)),
+        linear-gradient(to bottom, rgba(11,11,15,.74), rgba(11,11,15,.32) 36%, rgba(11,11,15,.93));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 190px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(980px, calc(100% - 32px));
+      padding: 0 0 88px;
+    }
+
+    .location-chip {
+      display: inline-flex;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 3px;
+      background: rgba(11,11,15,.52);
+      color: var(--cream);
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "SuzieDisplay", Impact, sans-serif;
+      color: #fff;
+      font-size: clamp(64px, 12vw, 136px);
+      line-height: .88;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px #fff, 0 0 12px #ff71c8, 0 0 24px #ff2fa4, 0 0 48px #ff008c, 0 0 80px #ff008c;
+      animation: neonFault 6s infinite;
+    }
+
+    @keyframes neonFault {
+      0%, 14%, 15%, 100% { opacity: 1; }
+      14.4% { opacity: .86; }
+    }
+
+    .hero-sub {
+      margin-top: 12px;
+      color: rgba(255,230,242,.74);
+      font-size: clamp(15px, 2vw, 22px);
+      font-weight: 900;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    .script {
+      color: var(--cream);
+      font-family: "SuzieScript", Georgia, serif;
+      line-height: 1;
+      text-shadow: 0 0 4px #fff3e8, 0 0 10px #ec935d, 0 0 22px #ec935d, 0 0 44px #d3491a;
+    }
+
+    .hero-tagline {
+      margin: 20px 0 34px;
+      font-size: clamp(34px, 5vw, 56px);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid rgba(255,79,163,.36);
+      background: rgba(255,79,163,.86);
+      padding: 11px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee span {
+      margin: 0 30px;
+      color: rgba(255,255,255,.93);
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: .27em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .section {
+      padding: 78px 0;
+    }
+
+    .section.tight { padding-top: 58px; }
+
+    .header-block {
+      padding: 72px 0 44px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: rgba(255,79,163,.82);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: rgba(255,79,163,.55);
+    }
+
+    .center .kicker {
+      justify-content: center;
+    }
+
+    .center .kicker::after {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: rgba(255,79,163,.55);
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    .page-title,
+    .section-title {
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: .94;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .section-title { font-size: clamp(36px, 5vw, 62px); }
+    .highlight {
+      color: var(--yellow);
+      text-shadow: 0 0 6px rgba(255,216,77,.7), 0 0 16px rgba(255,216,77,.35);
+    }
+
+    .lead {
+      max-width: 700px;
+      color: rgba(255,255,255,.62);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .body-copy {
+      color: rgba(255,255,255,.56);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 0 22px;
+      background: linear-gradient(to right, transparent, rgba(255,216,77,.55), transparent);
+      box-shadow: 0 0 8px rgba(255,216,77,.6);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .86fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 24px 0 26px;
+    }
+
+    .tag-row span,
+    .pill {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 3px;
+      background: rgba(255,255,255,.035);
+      color: rgba(255,255,255,.52);
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .photo-pair figure,
+    .feature-card,
+    .event-card,
+    .package-card,
+    .stat-card,
+    .review-card,
+    .info-card {
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 6px;
+      background: var(--card);
+      overflow: hidden;
+    }
+
+    figure { margin: 0; }
+    .photo-pair figure { aspect-ratio: 3 / 4; }
+    .photo-pair figure:nth-child(2) { margin-top: 38px; }
+
+    .wash {
+      background: linear-gradient(135deg, rgba(180,20,20,.08), transparent 50%, rgba(13,255,110,.04));
+    }
+
+    .center { text-align: center; }
+    .center .lead { margin-inline: auto; }
+
+    .feature-grid,
+    .package-grid,
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card figure { height: 190px; }
+    .feature-card-body,
+    .package-card,
+    .review-card,
+    .stat-card,
+    .info-card { padding: 22px; }
+
+    .feature-card h3,
+    .package-card h3,
+    .event-card h3 {
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .feature-card p,
+    .package-card p,
+    .review-card p,
+    .info-card p {
+      color: rgba(255,255,255,.54);
+      font-size: 14px;
+      line-height: 1.62;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .event-card {
+      border-left: 3px solid var(--pink);
+      padding: 20px;
+    }
+
+    .event-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .event-day,
+    .event-month,
+    .event-time {
+      color: rgba(255,255,255,.32);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .event-date {
+      color: #fff;
+      font-size: 34px;
+      line-height: .98;
+      font-weight: 1000;
+    }
+
+    .cover {
+      align-self: start;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 3px;
+      color: rgba(255,255,255,.62);
+      padding: 5px 8px;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .cover.free {
+      border-color: rgba(13,255,110,.32);
+      background: rgba(13,255,110,.06);
+      color: var(--green);
+    }
+
+    .event-card h3 {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 16px;
+    }
+
+    .event-row-list {
+      display: grid;
+      gap: 1px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr) 170px 76px;
+      gap: 18px;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      padding: 18px 0;
+    }
+
+    .event-row h3 { margin: 0 0 4px; color: #fff; text-transform: uppercase; }
+    .event-row p { margin: 0; color: rgba(255,255,255,.44); font-size: 14px; }
+
+    .gallery-preview,
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .gallery-preview figure,
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--card);
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-preview .wide {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .function-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 94px 0;
+      background: url("attached_assets/IMG_0424_1772233759717.jpeg") center / cover no-repeat;
+    }
+
+    .function-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,31,106,.15), transparent 60%), rgba(0,0,0,.76);
+    }
+
+    .function-hero .container { position: relative; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-panel {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 6px;
+      background: rgba(20,20,25,.82);
+      padding: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 4px;
+      background: #101014;
+      color: #fff;
+      padding: 13px 14px;
+      outline: 0;
+    }
+
+    textarea { min-height: 132px; resize: vertical; }
+    input:focus, textarea:focus { border-color: rgba(255,79,163,.58); }
+
+    .field.full { grid-column: 1 / -1; }
+    .form-note { display: none; color: var(--green); font-weight: 800; }
+    .form-note.active { display: block; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .88fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .info-stack { display: grid; gap: 16px; }
+
+    .hours {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hours li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      padding: 8px 0;
+      color: rgba(255,255,255,.58);
+      font-size: 14px;
+    }
+
+    .hours li:last-child { border-bottom: 0; }
+    .hours strong { color: #fff; }
+    .closed { color: rgba(255,255,255,.22); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-number {
+      margin-bottom: 8px;
+      color: var(--yellow);
+      font-size: 48px;
+      font-weight: 1000;
+      text-shadow: 0 0 14px rgba(255,216,77,.35);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .filter-btn {
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 4px;
+      background: rgba(255,255,255,.035);
+      color: rgba(255,255,255,.55);
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .filter-btn.active {
+      border-color: var(--pink);
+      background: var(--pink);
+      color: #fff;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 56px;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(5n + 1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item.hidden { display: none; }
+
+    .badge {
+      display: inline-flex;
+      border: 1px solid rgba(255,79,163,.36);
+      border-radius: 3px;
+      background: rgba(255,79,163,.12);
+      color: var(--pink-soft);
+      padding: 6px 8px;
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,.95);
+      padding: 22px;
+    }
+
+    .lightbox.active { display: grid; }
+    .lightbox figure {
+      max-width: min(100%, 980px);
+      max-height: 86vh;
+    }
+
+    .lightbox img {
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .lightbox figcaption {
+      margin-top: 12px;
+      color: rgba(255,255,255,.68);
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 4px;
+      background: rgba(255,255,255,.05);
+      color: #fff;
+      padding: 10px 13px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.56);
+    }
+
+    .footer-glow {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--pink), transparent);
+      opacity: .5;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr 1fr 1fr;
+      gap: 34px;
+      padding: 52px 22px;
+    }
+
+    .footer h3 {
+      margin-bottom: 14px;
+      color: rgba(255,255,255,.34);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    .footer p,
+    .footer a,
+    .footer li {
+      color: rgba(255,255,255,.52);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 80;
+      width: 100%;
+      display: none;
+      background: var(--pink);
+      color: #fff;
+      padding: 15px 16px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255,79,163,.6);
+    }
+
+    @media (max-width: 980px) {
+      .menu-toggle {
+        display: inline-flex;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 4px;
+        background: rgba(255,255,255,.05);
+        color: #fff;
+        padding: 10px 12px;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 76px 0 auto 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(0,0,0,.98);
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        padding: 20px;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-link { text-align: left; padding: 15px 0; }
+      .nav-cta { display: none; }
+      .two-col,
+      .contact-grid { grid-template-columns: 1fr; }
+      .feature-grid,
+      .package-grid,
+      .review-grid,
+      .events-grid,
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .event-row { grid-template-columns: 78px minmax(0, 1fr); }
+      .event-row .pill,
+      .event-row .cover { justify-self: start; }
+    }
+
+    @media (max-width: 640px) {
+      .container,
+      .nav-inner { padding-inline: 16px; }
+      .hero { min-height: 620px; }
+      .hero-content { padding-bottom: 58px; }
+      .hero-actions { display: grid; }
+      .primary-btn,
+      .outline-btn { width: 100%; text-align: center; }
+      .section { padding: 56px 0; }
+      .header-block { padding-top: 52px; }
+      .photo-pair,
+      .feature-grid,
+      .package-grid,
+      .review-grid,
+      .events-grid,
+      .stats-grid,
+      .footer-grid,
+      .form-grid,
+      .gallery-grid,
+      .gallery-preview { grid-template-columns: 1fr; }
+      .photo-pair figure:nth-child(2) { margin-top: 0; }
+      .gallery-preview .wide,
+      .gallery-item:nth-child(5n + 1) {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 1 / 1;
+      }
+      .event-row { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .sticky-cta { display: block; }
+      main { padding-bottom: 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home" data-route="home" aria-label="Suzie Wong's home">
+        <span class="brand-main">Suzie Wong's</span>
+        <span class="brand-sub">Good Time Bar</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false">Menu</button>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-link" href="#home" data-route="home">Home</a>
+        <a class="nav-link" href="#whats-on" data-route="whats-on">What's On</a>
+        <a class="nav-link" href="#about" data-route="about">About</a>
+        <a class="nav-link" href="#functions" data-route="functions">Functions</a>
+        <a class="nav-link" href="#gallery" data-route="gallery">Gallery</a>
+        <a class="nav-link" href="#contact" data-route="contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#functions" data-route="functions">Book a Function</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="page-home" data-title="Suzie Wong's Good Time Bar">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="location-chip">Fortitude Valley, Brisbane</span>
+          <h1 class="hero-title">Suzie Wong's</h1>
+          <div class="hero-sub">Good Time Bar</div>
+          <p class="script hero-tagline">"Life is too short to drink responsibly"</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#whats-on" data-route="whats-on">View What's On</a>
+            <a class="outline-btn" href="#functions" data-route="functions">Book a Function</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true"><div class="marquee-track">
+        <span>Live Music Wed-Sat Every Week</span><span>Fortitude Valley's Best Dive Bar</span><span>So Who The F*ck Is Suzie Wong?</span><span>Enter Through the Fridge Door</span><span>No Dress Code. Just Vibes.</span>
+        <span>Live Music Wed-Sat Every Week</span><span>Fortitude Valley's Best Dive Bar</span><span>So Who The F*ck Is Suzie Wong?</span><span>Enter Through the Fridge Door</span><span>No Dress Code. Just Vibes.</span>
+      </div></div>
+
+      <section class="section">
+        <div class="container two-col">
+          <div>
+            <div class="kicker">Live Music</div>
+            <h2 class="section-title">Brisbane's<br><span class="highlight">Loudest</span><br>Little Stage</h2>
+            <p class="body-copy">Wednesday to Saturday every week, Suzie Wong's is packed floor-to-ceiling with sweaty bodies, loud guitars, and people who came here for a quiet drink and stayed until 3am.</p>
+            <p class="body-copy">Rock. Funk. Garage. Soul. Blues. If it's loud and makes you move, it's probably on our stage. No pretentious playlist. No DJ booth. Just real bands, really close.</p>
+            <div class="tag-row"><span>Rock</span><span>Funk</span><span>Garage</span><span>Blues</span><span>Soul</span><span>Covers</span><span>Originals</span></div>
+            <a class="outline-btn" href="#whats-on" data-route="whats-on">See This Week's Lineup</a>
+          </div>
+          <div class="photo-pair">
+            <figure><img src="attached_assets/IMG_0431_1772241786153.jpeg" alt="Bartender at Suzie Wong's"></figure>
+            <figure><img src="attached_assets/IMG_0466_1772241786153.jpeg" alt="Behind the bar at Suzie Wong's"></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wash center">
+        <div class="container">
+          <div class="kicker">The Venue</div>
+          <h2 class="section-title">So Who The F*ck<br><span class="highlight">Is Suzie Wong?</span></h2>
+          <p class="lead">We've been asked this more times than we can count. The answer? Nobody knows. And that's exactly the point.</p>
+          <div class="feature-grid" style="margin-top:36px">
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0416_1772233759718.jpeg" alt="The fridge door"></figure><div class="feature-card-body"><h3>The Fridge Door</h3><p>You'll find us when you walk through a retro fridge. That's not a metaphor.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0425_1772233759717.jpeg" alt="Hawaiian dive bar interior"></figure><div class="feature-card-body"><h3>Hawaiian Dive Bar</h3><p>Surfboards on the ceiling. Neon signs everywhere. Tiki vibes meets grungy dive bar.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0422_1772233759717.jpeg" alt="Suzie Wong's lager"></figure><div class="feature-card-body"><h3>Suzie Wong's Lager</h3><p>We've got our own house lager. Wrap your lips around a pint. Bloody goood.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="kicker">Coming Up</div>
+          <h2 class="section-title">This Week<br><span class="highlight">On Stage</span></h2>
+          <div class="events-grid">
+            <article class="event-card"><div class="event-top"><div><div class="event-day">Thu</div><div class="event-date">6</div><div class="event-month">Mar</div></div><span class="cover free">Free</span></div><h3>The Grizzlers</h3><p>Surf Rock / Garage</p><div class="event-time">9:30pm</div></article>
+            <article class="event-card"><div class="event-top"><div><div class="event-day">Fri</div><div class="event-date">7</div><div class="event-month">Mar</div></div><span class="cover">$10</span></div><h3>Bad Habits</h3><p>Classic Rock Covers</p><div class="event-time">9:30pm</div></article>
+            <article class="event-card"><div class="event-top"><div><div class="event-day">Sat</div><div class="event-date">8</div><div class="event-month">Mar</div></div><span class="cover">$12</span></div><h3>The Midnight Rollers</h3><p>Funk / Soul</p><div class="event-time">9pm</div></article>
+            <article class="event-card"><div class="event-top"><div><div class="event-day">Sun</div><div class="event-date">9</div><div class="event-month">Mar</div></div><span class="cover">$15</span></div><h3>Velvet Revolver Tribute</h3><p>Heavy Rock</p><div class="event-time">8pm</div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight center">
+        <div class="container">
+          <h2 class="section-title">The Good Times<br><span class="highlight">Were Real</span></h2>
+          <p class="lead">Don't believe us? Here's the evidence.</p>
+          <div class="gallery-preview" style="margin-top:28px">
+            <figure class="wide"><img src="attached_assets/IMG_0424_1772233759717.jpeg" alt="Crowd at Suzie Wong's"></figure>
+            <figure><img src="attached_assets/IMG_0423_1772233759717.jpeg" alt="Party at Suzie Wong's"></figure>
+            <figure><img src="attached_assets/IMG_0422_1772233759717.jpeg" alt="Bartender at Suzie Wong's"></figure>
+            <figure><img src="attached_assets/IMG_0428_1772233759717.jpeg" alt="Wall of frames"></figure>
+            <figure><img src="attached_assets/IMG_0425_1772233759717.jpeg" alt="The bar"></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="function-hero center">
+        <div class="container">
+          <div class="kicker">Private Events</div>
+          <h2 class="section-title">Your Next Party<br><span class="highlight">Lives Here</span></h2>
+          <p class="lead">Birthdays. Work events you'll actually want to attend. Farewell parties where nobody leaves. Suzie Wong's handles private functions, full venue buyouts, and custom packages.</p>
+          <div class="hero-actions"><a class="primary-btn" href="#functions" data-route="functions">Enquire Now</a><a class="outline-btn" href="#contact" data-route="contact">Get in Touch</a></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-whats-on" data-title="What's On | Suzie Wong's Good Time Bar">
+      <div class="container header-block">
+        <div class="kicker">Events</div>
+        <h1 class="page-title">What's On</h1>
+        <p class="lead">Live music, good times, no bad vibes. Check what's happening at Suzie Wong's this week.</p>
+      </div>
+      <div class="divider"></div>
+      <section class="section">
+        <div class="container">
+          <div class="kicker">Featured This Week</div>
+          <div class="feature-grid">
+            <article class="package-card"><span class="badge">Featured</span><h3 style="margin-top:14px">Bad Habits</h3><p>Brisbane's favourite classic rock cover band. AC/DC, Guns N' Roses, Led Zeppelin - you know every word, they'll play every song.</p><div class="tag-row"><span>Friday 7 March</span><span>9:30pm</span><span>$10</span></div></article>
+            <article class="package-card"><span class="badge">Featured</span><h3 style="margin-top:14px">The Midnight Rollers</h3><p>Seven-piece funk machine that will have you shaking things your spine forgot it could shake. Full horn section. Expect to sweat.</p><div class="tag-row"><span>Saturday 8 March</span><span>9pm</span><span>$12</span></div></article>
+            <article class="package-card"><span class="badge">Sunday</span><h3 style="margin-top:14px">Velvet Revolver Tribute</h3><p>The best Velvet Revolver tribute act this side of the Pacific. Slash solos, Weiland energy, and a crowd that never disappoints.</p><div class="tag-row"><span>Sunday 9 March</span><span>8pm</span><span>$15</span></div></article>
+          </div>
+          <div class="event-row-list">
+            <div class="event-row"><div><div class="event-date">06</div><div class="event-month">Mar Thu</div></div><div><h3>The Grizzlers</h3><p>Four-piece surf rock outfit from the Sunshine Coast.</p></div><span class="pill">Surf Rock / Garage</span><span class="cover free">Free</span></div>
+            <div class="event-row"><div><div class="event-date">07</div><div class="event-month">Mar Fri</div></div><div><h3>Bad Habits</h3><p>Classic rock covers with massive Friday night energy.</p></div><span class="pill">Classic Rock Covers</span><span class="cover">$10</span></div>
+            <div class="event-row"><div><div class="event-date">08</div><div class="event-month">Mar Sat</div></div><div><h3>The Midnight Rollers</h3><p>Seven-piece funk and soul machine.</p></div><span class="pill">Funk / Soul</span><span class="cover">$12</span></div>
+            <div class="event-row"><div><div class="event-date">09</div><div class="event-month">Mar Sun</div></div><div><h3>Velvet Revolver Tribute</h3><p>Heavy rock, Slash solos, and no quiet corners.</p></div><span class="pill">Heavy Rock</span><span class="cover">$15</span></div>
+            <div class="event-row"><div><div class="event-date">13</div><div class="event-month">Mar Thu</div></div><div><h3>Open Mic Night</h3><p>Originals welcome, covers encouraged, all genres considered.</p></div><span class="pill">Various</span><span class="cover free">Free</span></div>
+            <div class="event-row"><div><div class="event-date">14</div><div class="event-month">Mar Fri</div></div><div><h3>The Wolfpack</h3><p>Raw, dirty blues-rock with a Queensland edge.</p></div><span class="pill">Rock / Blues</span><span class="cover">$10</span></div>
+            <div class="event-row"><div><div class="event-date">15</div><div class="event-month">Mar Sat</div></div><div><h3>Neon Tropics</h3><p>80s-inspired synth pop meets Brisbane heat.</p></div><span class="pill">New Wave / Synth</span><span class="cover">$12</span></div>
+            <div class="event-row"><div><div class="event-date">16</div><div class="event-month">Mar Sun</div></div><div><h3>Dead Ringer Band</h3><p>Australia's favourite Sunday session, now with added twang.</p></div><span class="pill">Country Rock</span><span class="cover free">Free</span></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-about" data-title="About | Suzie Wong's Good Time Bar">
+      <div class="container header-block">
+        <div class="kicker">Our Story</div>
+        <h1 class="page-title">So Who The<br><span class="highlight">F*ck Is<br>Suzie Wong?</span></h1>
+      </div>
+      <div class="divider"></div>
+      <section class="section">
+        <div class="container two-col" style="align-items:start">
+          <div>
+            <p class="lead" style="color:rgba(255,255,255,.82)">Nobody knows. And that's part of the magic.</p>
+            <p class="body-copy">Suzie Wong's Good Time Bar is Fortitude Valley's worst kept secret - a Hawaiian-inspired dive bar and live music venue that's been providing Brisbane with exactly the kind of nights you can't quite explain to someone who wasn't there.</p>
+            <p class="body-copy">We're accessed through a retro fridge door. There are surfboards hanging from the ceiling. A Jameson neon sign keeps watch over the bar. The walls are covered in frames. The music is always too loud.</p>
+            <p class="body-copy">We are not a cocktail bar. We are not a restaurant. We are a dive bar with a world-class stage, a staff that genuinely gives a shit, and a crowd that knows how to have a good time.</p>
+            <p class="script" style="font-size:44px">"Life is too short<br>to drink responsibly."</p>
+          </div>
+          <div>
+            <figure style="height:300px;border-radius:6px;overflow:hidden;margin-bottom:14px"><img src="attached_assets/IMG_0425_1772233759717.jpeg" alt="The bar at Suzie Wong's"></figure>
+            <div class="photo-pair"><figure style="aspect-ratio:1/1"><img src="attached_assets/IMG_0421_1772233759717.jpeg" alt="Jameson neon sign"></figure><figure style="aspect-ratio:1/1;margin-top:0"><img src="attached_assets/IMG_0426_1772233759717.jpeg" alt="The bar scene"></figure></div>
+          </div>
+        </div>
+      </section>
+      <section class="section wash center">
+        <div class="container">
+          <div class="kicker">The Venue</div>
+          <h2 class="section-title">What Makes This Place<br><span class="highlight">Different</span></h2>
+          <div class="feature-grid" style="margin-top:36px">
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0416_1772233759718.jpeg" alt="The fridge door"></figure><div class="feature-card-body"><h3>The Fridge Door</h3><p>A vintage retro fridge that has become a Brisbane rite of passage.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0420_1772233759717.jpeg" alt="The stage"></figure><div class="feature-card-body"><h3>The Stage</h3><p>Tiny, intimate, powerful. When the bass kicks in, you feel it in your chest.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0417_1772233759718.jpeg" alt="Venue decor"></figure><div class="feature-card-body"><h3>The Decor</h3><p>Surfboards, framed prints, neon, Hawaiian knick-knacks and dive bar ephemera.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0466_1772241786153.jpeg" alt="Staff"></figure><div class="feature-card-body"><h3>The People</h3><p>No dress code enforcement, no attitude, no pretension. Just legends.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0418_1772233759718.jpeg" alt="Live music"></figure><div class="feature-card-body"><h3>The Music</h3><p>Four nights of live music every week, Wednesday to Saturday.</p></div></article>
+            <article class="feature-card"><figure><img src="attached_assets/IMG_0432_1772241786153.jpeg" alt="Suzie Wong's Lager"></figure><div class="feature-card-body"><h3>Suzie Wong's Lager</h3><p>Cold, crisp, and dangerously drinkable. Brewed for a good time.</p></div></article>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container stats-grid">
+          <article class="stat-card center"><div class="stat-number">4</div><p>Live Music Nights Per Week</p></article>
+          <article class="stat-card center"><div class="stat-number">100+</div><p>Acts Per Year</p></article>
+          <article class="stat-card center"><div class="stat-number">1</div><p>Retro Fridge Door</p></article>
+          <article class="stat-card center"><div class="stat-number">∞</div><p>Good Times Had</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-functions" data-title="Functions | Suzie Wong's Good Time Bar">
+      <section class="function-hero">
+        <div class="container">
+          <div class="kicker">Private Events</div>
+          <h1 class="page-title">Your Party.<br><span class="highlight">Our Bar.</span></h1>
+          <p class="lead">Suzie Wong's is made for celebrations that actually go off. Birthdays. Bucks nights. Work events you won't regret attending. We handle everything.</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="kicker">Function Packages</div>
+          <h2 class="section-title">Pick Your Package</h2>
+          <div class="package-grid">
+            <article class="package-card"><h3>Semi-Private Function</h3><p><strong>20-60 guests</strong></p><p>Exclusive use of our rear function space. DJ or live music package available. Bar tab options and custom packages.</p><div class="tag-row"><span>Dedicated bar</span><span>Sound system</span><span>Function host</span></div></article>
+            <article class="package-card" style="border-color:rgba(255,79,163,.4);background:linear-gradient(135deg,rgba(255,79,163,.1),var(--card))"><span class="badge">Most Popular</span><h3 style="margin-top:14px">Full Venue Buyout</h3><p><strong>60-200 guests</strong></p><p>Take over the whole damn thing. The stage, the bar, the fridge door entrance - all yours.</p><div class="tag-row"><span>Exclusive venue</span><span>Live band package</span><span>Full AV</span></div></article>
+            <article class="package-card"><h3>Band + Bar Package</h3><p><strong>Any size</strong></p><p>Book a live band through us and get a sweetheart deal on the bar. We can match you to the perfect act.</p><div class="tag-row"><span>Band matching</span><span>Stage included</span><span>Preferred rates</span></div></article>
+          </div>
+          <div class="gallery-preview" style="margin-top:34px"><figure><img src="attached_assets/IMG_0429_1772233759717.jpeg" alt="Functions at Suzie Wong's"></figure><figure><img src="attached_assets/IMG_0423_1772233759717.jpeg" alt="Party crowd"></figure><figure><img src="attached_assets/IMG_0424_1772233759717.jpeg" alt="Good times"></figure></div>
+        </div>
+      </section>
+      <section class="section wash">
+        <div class="container" style="max-width:760px">
+          <div class="center"><div class="kicker">Get in Touch</div><h2 class="section-title">Make an Enquiry</h2><p class="lead">Tell us what you've got in mind and we'll get back to you faster than last drinks bell.</p></div>
+          <form class="form-panel static-form" data-success="Function enquiry noted locally. No backend is connected in this static version.">
+            <div class="form-grid">
+              <div class="field"><label>Name</label><input required placeholder="First & last name"></div>
+              <div class="field"><label>Email</label><input type="email" required placeholder="your@email.com"></div>
+              <div class="field"><label>Phone</label><input required placeholder="04XX XXX XXX"></div>
+              <div class="field"><label>Event Type</label><input required placeholder="Birthday, Bucks, Work event..."></div>
+              <div class="field"><label>Guest Count</label><input required placeholder="Approx. number of guests"></div>
+              <div class="field"><label>Preferred Date</label><input type="date" required></div>
+              <div class="field full"><label>Approximate Budget</label><input placeholder="e.g. $2,000 - $5,000"></div>
+              <div class="field full"><label>Tell Us More</label><textarea required placeholder="What kind of night are you planning?"></textarea></div>
+            </div>
+            <p class="form-note"></p>
+            <button class="primary-btn" type="submit" style="width:100%;margin-top:18px">Send Enquiry</button>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-gallery" data-title="Gallery | Suzie Wong's Good Time Bar">
+      <div class="container header-block">
+        <div class="kicker">Gallery</div>
+        <h1 class="page-title">The Evidence</h1>
+        <p class="lead">"I swear I can explain" - said nobody here, ever.</p>
+        <div class="filters" aria-label="Gallery filters">
+          <button class="filter-btn active" data-filter="All">All</button>
+          <button class="filter-btn" data-filter="Crowd">Crowd</button>
+          <button class="filter-btn" data-filter="Stage">Stage</button>
+          <button class="filter-btn" data-filter="Bar">Bar</button>
+          <button class="filter-btn" data-filter="Venue">Venue</button>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <section class="section">
+        <div class="container gallery-grid" id="galleryGrid"></div>
+        <div class="container center"><h2 class="section-title" style="font-size:32px">See More on the 'Gram</h2><p class="lead">Follow us for the freshest evidence of what happens when the music starts.</p><a class="outline-btn" href="https://www.instagram.com/suziewongsgoodtimebar/" target="_blank" rel="noopener noreferrer">@suziewongsgoodtimebar →</a></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-contact" data-title="Contact | Suzie Wong's Good Time Bar">
+      <div class="container header-block">
+        <div class="kicker">Get in Touch</div>
+        <h1 class="page-title">Contact Us</h1>
+        <p class="lead">Questions? Bookings? Want to tell Suzie something? We're all ears. Suzie doesn't actually exist, but we'll pass the message on.</p>
+      </div>
+      <div class="divider"></div>
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="info-stack">
+            <article class="info-card"><h3>Find Us</h3><p><strong>142 Wickham Street</strong><br>Fortitude Valley QLD 4006</p><p>Enter through the retro fridge door.</p></article>
+            <article class="info-card"><h3>Phone</h3><p><a href="tel:+61734547339">(07) 3454 7339</a></p></article>
+            <article class="info-card"><h3>Email</h3><p><a href="mailto:info@suziewongsbar.com.au">info@suziewongsbar.com.au</a></p></article>
+            <article class="info-card"><h3>Opening Hours</h3><ul class="hours"><li><span>Monday</span><strong class="closed">Closed</strong></li><li><span>Tuesday</span><strong>4pm - Late</strong></li><li><span>Wednesday</span><strong>4pm - Late</strong></li><li><span>Thursday</span><strong>4pm - 3am</strong></li><li><span>Friday</span><strong>2pm - 3am</strong></li><li><span>Saturday</span><strong>2pm - 3am</strong></li><li><span>Sunday</span><strong>2pm - Late</strong></li></ul></article>
+          </div>
+          <form class="form-panel static-form" data-success="Message noted locally. No backend is connected in this static version.">
+            <h2 class="section-title" style="font-size:32px">Send a Message</h2>
+            <div class="form-grid">
+              <div class="field"><label>Name</label><input required placeholder="Your name"></div>
+              <div class="field"><label>Email</label><input type="email" required placeholder="your@email.com"></div>
+              <div class="field full"><label>Subject</label><input required placeholder="What's this about?"></div>
+              <div class="field full"><label>Message</label><textarea required placeholder="Say what you gotta say..."></textarea></div>
+            </div>
+            <p class="form-note"></p>
+            <button class="primary-btn" type="submit" style="width:100%;margin-top:18px">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container footer-grid">
+      <div>
+        <h3>Suzie Wong's</h3>
+        <p class="script" style="font-size:28px">"life is too short<br>to drink responsibly"</p>
+      </div>
+      <div>
+        <h3>Navigate</h3>
+        <ul><li><a href="#home" data-route="home">Home</a></li><li><a href="#whats-on" data-route="whats-on">What's On</a></li><li><a href="#about" data-route="about">About</a></li><li><a href="#functions" data-route="functions">Functions</a></li><li><a href="#gallery" data-route="gallery">Gallery</a></li><li><a href="#contact" data-route="contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h3>Opening Hours</h3>
+        <ul><li>Mon: Closed</li><li>Tue-Wed: 4pm - Late</li><li>Thu: 4pm - 3am</li><li>Fri-Sat: 2pm - 3am</li><li>Sun: 2pm - Late</li></ul>
+      </div>
+      <div>
+        <h3>Find Us</h3>
+        <p>142 Wickham Street<br>Fortitude Valley<br>Brisbane QLD 4006</p>
+        <p><a href="tel:+61734547339">(07) 3454 7339</a><br><a href="mailto:info@suziewongsbar.com.au">info@suziewongsbar.com.au</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="sticky-cta" href="#whats-on" data-route="whats-on">What's On Tonight</a>
+
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="lightbox-close" type="button">Close</button>
+    <figure><img src="" alt=""><figcaption></figcaption></figure>
+  </div>
+
+  <script>
+    (function () {
+      var routes = ["home", "whats-on", "about", "functions", "gallery", "contact"];
+      var nav = document.querySelector(".nav-links");
+      var menuToggle = document.querySelector(".menu-toggle");
+
+      function showRoute(route) {
+        if (routes.indexOf(route) === -1) route = "home";
+        document.querySelectorAll(".page").forEach(function (page) {
+          page.classList.toggle("active", page.id === "page-" + route);
+          if (page.id === "page-" + route) document.title = page.dataset.title || "Suzie Wong's Good Time Bar";
+        });
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+          link.classList.toggle("active", link.dataset.route === route);
+        });
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        window.scrollTo(0, 0);
+      }
+
+      function currentRoute() {
+        return (location.hash || "#home").replace("#", "");
+      }
+
+      document.querySelectorAll("[data-route]").forEach(function (link) {
+        link.addEventListener("click", function () {
+          var route = link.dataset.route;
+          if (currentRoute() === route) showRoute(route);
+        });
+      });
+
+      window.addEventListener("hashchange", function () { showRoute(currentRoute()); });
+      menuToggle.addEventListener("click", function () {
+        var open = !nav.classList.contains("open");
+        nav.classList.toggle("open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+      });
+
+      var photos = [
+        ["attached_assets/IMG_0466_1772241786153.jpeg", "She knows exactly what she's doing behind that bar", "Bar"],
+        ["attached_assets/IMG_0429_1772233759717.jpeg", "When things get loose on a Saturday night", "Crowd"],
+        ["attached_assets/IMG_0434_1772241786153.jpeg", "The neon says what we're all thinking", "Venue"],
+        ["attached_assets/IMG_0420_1772233759717.jpeg", "The neon sign that says it all", "Stage"],
+        ["attached_assets/IMG_0431_1772241786153.jpeg", "Clinking glasses with a smile - that's the Suzie way", "Bar"],
+        ["attached_assets/IMG_0424_1772233759717.jpeg", "Good times at the bar", "Crowd"],
+        ["attached_assets/IMG_0425_1772233759717.jpeg", "The bar - stocked and ready", "Bar"],
+        ["attached_assets/IMG_0419_1772233759718.jpeg", "Another packed night on the stage", "Stage"],
+        ["attached_assets/IMG_0432_1772241786153.jpeg", "Sailor Jerry and Suzie Wong's - a natural pairing", "Bar"],
+        ["attached_assets/IMG_0423_1772233759717.jpeg", "Nobody told them to get on the bar. They just did.", "Crowd"],
+        ["attached_assets/IMG_0422_1772233759717.jpeg", "The bartenders here are legends", "Bar"],
+        ["attached_assets/IMG_0428_1772233759717.jpeg", "The wall of a thousand frames", "Venue"],
+        ["attached_assets/IMG_0426_1772233759717.jpeg", "The bar from inside - surfboard overhead", "Bar"],
+        ["attached_assets/IMG_0421_1772233759717.jpeg", "Jameson watching over the whisky shelf", "Bar"],
+        ["attached_assets/IMG_0427_1772233759717.jpeg", "Pouring shots with purpose", "Bar"],
+        ["attached_assets/IMG_0417_1772233759718.jpeg", "Giving it everything on the mic", "Stage"],
+        ["attached_assets/IMG_0416_1772233759718.jpeg", "The famous fridge door entrance", "Venue"],
+        ["attached_assets/IMG_0418_1772233759718.jpeg", "Suzie Wong's Lager - 4.2% ABV. Bloody goood.", "Bar"],
+        ["attached_assets/IMG_0415_1772233759718.jpeg", "A Suzie Wong's cocktail - pineapple optional, umbrella mandatory", "Bar"],
+        ["attached_assets/IMG_0414_1772233759718.jpeg", "Packed out another night, another band", "Stage"]
+      ];
+
+      var galleryGrid = document.getElementById("galleryGrid");
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = lightbox.querySelector("img");
+      var lightboxCaption = lightbox.querySelector("figcaption");
+
+      photos.forEach(function (photo) {
+        var item = document.createElement("figure");
+        item.className = "gallery-item";
+        item.dataset.category = photo[2];
+        item.innerHTML = '<img src="' + photo[0] + '" alt="' + photo[1].replace(/"/g, "&quot;") + '"><span class="badge" style="position:absolute;top:10px;left:10px">' + photo[2] + "</span>";
+        item.addEventListener("click", function () {
+          lightboxImg.src = photo[0];
+          lightboxImg.alt = photo[1];
+          lightboxCaption.textContent = photo[1];
+          lightbox.classList.add("active");
+        });
+        galleryGrid.appendChild(item);
+      });
+
+      document.querySelectorAll(".filter-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+          document.querySelectorAll(".filter-btn").forEach(function (btn) { btn.classList.remove("active"); });
+          button.classList.add("active");
+          var filter = button.dataset.filter;
+          document.querySelectorAll(".gallery-item").forEach(function (item) {
+            item.classList.toggle("hidden", filter !== "All" && item.dataset.category !== filter);
+          });
+        });
+      });
+
+      lightbox.querySelector(".lightbox-close").addEventListener("click", function () { lightbox.classList.remove("active"); });
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) lightbox.classList.remove("active");
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") lightbox.classList.remove("active");
+      });
+
+      document.querySelectorAll(".static-form").forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var note = form.querySelector(".form-note");
+          note.textContent = form.dataset.success;
+          note.classList.add("active");
+          form.reset();
+        });
+      });
+
+      showRoute(currentRoute());
+    })();
+  </script>
+</body>
+</html>
