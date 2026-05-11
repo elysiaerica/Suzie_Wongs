@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suzie Wong's Launch Options</title>
+  <style>
+    @font-face {
+      font-family: "SuzieDisplay";
+      src: url("client/public/fonts/monograph.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "SuzieScript";
+      src: url("client/public/fonts/valen-valentine-script.ttf") format("truetype");
+    }
+
+    :root {
+      --bg: #0b0b0f;
+      --card: #141419;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #fff6fb;
+      --muted: #a8a8b3;
+      --pink: #ff4fa3;
+      --pink-soft: #ff8cc8;
+      --yellow: #ffd84d;
+      --green: #0dff6e;
+      --cream: #fff3e8;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: dark;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(255, 79, 163, 0.11), transparent 28rem),
+        radial-gradient(circle at 88% 34%, rgba(255, 216, 77, 0.06), transparent 24rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Montserrat, Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(0, 0, 0, 0.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      min-height: 74px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      min-width: 154px;
+    }
+
+    .brand-main {
+      font-family: "SuzieDisplay", Impact, sans-serif;
+      color: var(--yellow);
+      text-transform: uppercase;
+      font-size: 20px;
+      text-shadow: 0 0 10px rgba(255, 216, 77, 0.42);
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links span {
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-links span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      box-shadow: 0 0 10px var(--pink);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links span:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta,
+    .primary-btn {
+      border: 2px solid var(--yellow);
+      background: #fff;
+      color: #111;
+      box-shadow:
+        0 0 6px #fff,
+        0 0 12px var(--yellow),
+        0 0 24px var(--yellow),
+        0 0 40px #ffb300;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 13px 18px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .primary-btn:hover,
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 8px #fff,
+        0 0 18px var(--yellow),
+        0 0 36px var(--yellow),
+        0 0 60px #ffb300;
+    }
+
+    .offer-shell {
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(11, 11, 15, 0.2), rgba(11, 11, 15, 0.96)),
+        url("attached_assets/IMG_0419_1772238291426.jpeg") center 20% / cover no-repeat;
+    }
+
+    .offer-hero {
+      max-width: 1240px;
+      min-height: 640px;
+      margin: 0 auto;
+      padding: 72px 22px 42px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.72fr);
+      gap: 42px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: rgba(255, 79, 163, 0.9);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 46px;
+      height: 1px;
+      background: rgba(255, 79, 163, 0.64);
+    }
+
+    .offer-title {
+      margin: 0;
+      max-width: 780px;
+      color: #fff;
+      font-size: clamp(46px, 7vw, 94px);
+      line-height: 0.91;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255, 79, 163, 0.26);
+    }
+
+    .offer-copy {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.48;
+      font-weight: 600;
+    }
+
+    .script-line {
+      margin-top: 22px;
+      color: var(--cream);
+      font-family: "SuzieScript", Georgia, serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      text-shadow:
+        0 0 4px #fff3e8,
+        0 0 10px #ec935d,
+        0 0 22px #d3491a,
+        0 0 54px #d3491a;
+    }
+
+    .option-panel {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .controls {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(8, 8, 11, 0.84);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 18px;
+      backdrop-filter: blur(14px);
+    }
+
+    .control-label {
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    .option-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .option-button,
+    .note-toggle {
+      min-height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.68);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .option-button[aria-pressed="true"] {
+      border-color: rgba(255, 79, 163, 0.7);
+      background: rgba(255, 79, 163, 0.16);
+      color: #fff;
+      box-shadow: inset 0 0 24px rgba(255, 79, 163, 0.1), 0 0 18px rgba(255, 79, 163, 0.18);
+    }
+
+    .note-toggle {
+      width: 100%;
+      min-height: 42px;
+    }
+
+    .note-toggle[aria-pressed="true"] {
+      border-color: rgba(255, 216, 77, 0.55);
+      color: var(--yellow);
+      background: rgba(255, 216, 77, 0.08);
+    }
+
+    .active-offer {
+      border: 1px solid rgba(255, 79, 163, 0.26);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(255, 79, 163, 0.13), rgba(20, 20, 25, 0.96));
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .recommended {
+      display: inline-flex;
+      margin-bottom: 13px;
+      border: 1px solid rgba(13, 255, 110, 0.34);
+      border-radius: 4px;
+      background: rgba(13, 255, 110, 0.08);
+      color: var(--green);
+      padding: 7px 9px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .offer-name {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .price {
+      margin: 0 0 14px;
+      color: var(--yellow);
+      font-size: 46px;
+      line-height: 1;
+      font-weight: 1000;
+      text-shadow: 0 0 18px rgba(255, 216, 77, 0.28);
+    }
+
+    .deposit {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .final-cta {
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.36;
+      font-weight: 900;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid rgba(255, 79, 163, 0.32);
+      background: rgba(255, 79, 163, 0.84);
+      padding: 11px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      margin: 0 28px;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: 0.27em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .site-preview-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 68px 22px 88px;
+    }
+
+    .preview-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .preview-heading h2 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.95;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .highlight {
+      color: var(--yellow);
+      text-shadow: 0 0 16px rgba(255, 216, 77, 0.35);
+    }
+
+    .preview-heading p {
+      max-width: 440px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.54);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .annotated-preview {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0b0b0f;
+      box-shadow: var(--shadow);
+    }
+
+    .mini-site {
+      position: relative;
+    }
+
+    .mini-hero {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+      background: url("attached_assets/IMG_0419_1772238291426.jpeg") center 20% / cover no-repeat;
+    }
+
+    .mini-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 64%, rgba(11, 11, 15, 0.2), rgba(11, 11, 15, 0.92)),
+        linear-gradient(to bottom, rgba(11, 11, 15, 0.72), rgba(11, 11, 15, 0.33) 34%, rgba(11, 11, 15, 0.94));
+    }
+
+    .mini-hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(920px, calc(100% - 36px));
+      padding: 0 0 82px;
+    }
+
+    .location-chip {
+      display: inline-flex;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 3px;
+      background: rgba(11, 11, 15, 0.52);
+      color: var(--cream);
+      padding: 8px 13px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .mini-logo {
+      margin: 0;
+      color: #fff;
+      font-family: "SuzieDisplay", Impact, sans-serif;
+      font-size: clamp(58px, 11vw, 122px);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 6px #fff,
+        0 0 12px #ff71c8,
+        0 0 24px #ff2fa4,
+        0 0 48px #ff008c,
+        0 0 80px #ff008c;
+    }
+
+    .mini-kicker {
+      margin-top: 10px;
+      color: rgba(255, 230, 242, 0.72);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .mini-tagline {
+      margin: 18px 0 30px;
+      color: var(--cream);
+      font-family: "SuzieScript", Georgia, serif;
+      font-size: clamp(30px, 4.6vw, 50px);
+      line-height: 1;
+      text-shadow:
+        0 0 4px #fff3e8,
+        0 0 10px #ec935d,
+        0 0 22px #ec935d,
+        0 0 40px #d3491a;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .outline-btn {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.34);
+      color: var(--cream);
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .site-section {
+      padding: 58px 34px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 0.86fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: rgba(255, 79, 163, 0.82);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: rgba(255, 79, 163, 0.55);
+    }
+
+    .site-section h3 {
+      margin: 0 0 18px;
+      color: #fff;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 0.95;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .site-section p {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.68;
+      font-size: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 22px;
+    }
+
+    .tag-row span {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .photo-grid figure,
+    .gallery-grid figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--card);
+    }
+
+    .photo-grid figure {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-grid figure:nth-child(2) {
+      margin-top: 38px;
+    }
+
+    .venue-band {
+      background: linear-gradient(135deg, rgba(180, 20, 20, 0.08), rgba(0, 0, 0, 0) 50%, rgba(13, 255, 110, 0.04));
+      text-align: center;
+    }
+
+    .venue-band .section-kicker {
+      justify-content: center;
+    }
+
+    .venue-band .section-kicker::after {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: rgba(255, 79, 163, 0.55);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+      text-align: left;
+    }
+
+    .feature-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      background: var(--card);
+    }
+
+    .feature-card figure {
+      margin: 0;
+      aspect-ratio: 16 / 10;
+    }
+
+    .feature-card div {
+      padding: 17px;
+    }
+
+    .feature-card h4 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .event-card {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--pink);
+      border-radius: 6px;
+      background: var(--card);
+      padding: 18px;
+    }
+
+    .event-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .event-day,
+    .event-month,
+    .event-time {
+      color: rgba(255, 255, 255, 0.32);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .event-date {
+      color: #fff;
+      font-size: 32px;
+      line-height: 0.98;
+      font-weight: 1000;
+    }
+
+    .cover {
+      align-self: start;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 5px 8px;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .cover.free {
+      border-color: rgba(13, 255, 110, 0.32);
+      background: rgba(13, 255, 110, 0.06);
+      color: var(--green);
+    }
+
+    .event-card h4 {
+      margin: 0 0 5px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .event-card p {
+      margin: 0 0 5px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .gallery-grid figure {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-grid .wide {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .function-cta {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: url("attached_assets/IMG_0424_1772233759717.jpeg") center / cover no-repeat;
+    }
+
+    .function-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 31, 106, 0.15), transparent 60%),
+        rgba(0, 0, 0, 0.76);
+    }
+
+    .function-cta > div {
+      position: relative;
+      max-width: 720px;
+      padding: 58px 22px;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.54);
+      padding: 42px 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 28px;
+    }
+
+    .footer h4 {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.34);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .footer p,
+    .footer li {
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .notes-layer[hidden] {
+      display: none;
+    }
+
+    .note {
+      position: absolute;
+      z-index: 6;
+      max-width: 230px;
+      border: 1px solid rgba(255, 216, 77, 0.42);
+      border-radius: 6px;
+      background: rgba(8, 8, 11, 0.9);
+      box-shadow: 0 0 24px rgba(255, 216, 77, 0.15);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.45;
+      backdrop-filter: blur(12px);
+    }
+
+    .note::before {
+      content: attr(data-num);
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: #121212;
+      font-size: 11px;
+      font-weight: 1000;
+      box-shadow: 0 0 12px rgba(255, 216, 77, 0.5);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .note-visual { top: 98px; left: 36px; }
+    .note-mobile { top: 245px; right: 38px; }
+    .note-whats-on { top: 798px; left: 36px; }
+    .note-functions { top: 1160px; right: 44px; }
+    .note-contact { bottom: 72px; right: 42px; }
+    .note-deploy { top: 420px; left: 44px; }
+    .note-weekly { top: 1410px; left: 40px; }
+    .note-mailing { bottom: 360px; left: 40px; }
+    .note-analytics { bottom: 226px; right: 42px; }
+    .note-admin { top: 1540px; right: 40px; }
+
+    .mobile-note-list {
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #101014;
+      padding: 20px;
+    }
+
+    .mobile-note-list h3 {
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .mobile-note-list ol {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .mobile-note-list li {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .closing-offer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(135deg, rgba(255, 79, 163, 0.1), rgba(0, 0, 0, 0.2));
+      padding: 54px 22px 66px;
+      text-align: center;
+    }
+
+    .closing-offer p {
+      max-width: 660px;
+      margin: 0 auto 20px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .closing-offer strong {
+      display: block;
+      color: #fff;
+      font-size: clamp(24px, 4vw, 40px);
+      line-height: 1.1;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .offer-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 58px;
+      }
+
+      .option-panel {
+        max-width: 620px;
+      }
+
+      .preview-heading,
+      .two-col {
+        display: block;
+      }
+
+      .preview-heading p {
+        margin-top: 16px;
+      }
+
+      .photo-grid {
+        margin-top: 28px;
+      }
+
+      .feature-grid,
+      .events-grid,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid .wide {
+        grid-column: span 2;
+        aspect-ratio: 4 / 3;
+      }
+
+      .note {
+        display: none;
+      }
+
+      .notes-layer:not([hidden]) + .mobile-note-list {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner,
+      .site-preview-wrap {
+        padding-inline: 16px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .offer-hero {
+        padding: 44px 16px 34px;
+      }
+
+      .option-toggle {
+        grid-template-columns: 1fr;
+      }
+
+      .active-offer,
+      .controls {
+        padding: 16px;
+      }
+
+      .price {
+        font-size: 38px;
+      }
+
+      .mini-hero {
+        min-height: 560px;
+      }
+
+      .mini-hero-content {
+        padding-bottom: 58px;
+      }
+
+      .site-section {
+        padding: 44px 18px;
+      }
+
+      .events-grid,
+      .feature-grid,
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-grid figure:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .primary-btn,
+      .outline-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Suzie Wong's preview navigation">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Suzie Wong's home">
+        <span class="brand-main">Suzie Wong's</span>
+        <span class="brand-sub">Good Time Bar</span>
+      </a>
+      <nav class="nav-links" aria-label="Site preview">
+        <span>Home</span>
+        <span>What's On</span>
+        <span>About</span>
+        <span>Functions</span>
+        <span>Gallery</span>
+        <span>Contact</span>
+      </nav>
+      <a class="nav-cta" href="#options">Book a Function</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="offer-shell">
+      <div class="offer-hero">
+        <div>
+          <div class="eyebrow">Launch Options</div>
+          <h1 class="offer-title">Your website is already built.<br>Choose how it goes live.</h1>
+          <p class="offer-copy">Option 1 gets the site live cleanly. Option 2 gets it live as a proper venue tool, with the live music, bookings and update pieces connected from day one.</p>
+          <div class="script-line">life is too short to drink responsibly</div>
+        </div>
+
+        <aside class="option-panel" id="options" aria-label="Launch option selector">
+          <div class="controls">
+            <div class="control-label">Choose launch path</div>
+            <div class="option-toggle" role="group" aria-label="Select an offer option">
+              <button class="option-button" type="button" data-option="one" aria-pressed="false">Option 1</button>
+              <button class="option-button" type="button" data-option="two" aria-pressed="true">Option 2</button>
+            </div>
+            <button class="note-toggle" type="button" aria-pressed="true">Notes On</button>
+          </div>
+
+          <div class="active-offer" aria-live="polite">
+            <span class="recommended">Recommended</span>
+            <h2 class="offer-name">Option 2 - Website + Venue Setup</h2>
+            <p class="price">$3,750</p>
+            <p class="deposit">50% to start. Balance on launch.</p>
+            <p class="final-cta">Reply with Option 1 or Option 2 and I'll take it from there.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Live Music Wed-Sat Every Week</span>
+        <span>Fortitude Valley's Best Dive Bar</span>
+        <span>So Who The F*ck Is Suzie Wong?</span>
+        <span>Enter Through the Fridge Door</span>
+        <span>No Dress Code. Just Vibes.</span>
+        <span>Live Music Wed-Sat Every Week</span>
+        <span>Fortitude Valley's Best Dive Bar</span>
+        <span>So Who The F*ck Is Suzie Wong?</span>
+        <span>Enter Through the Fridge Door</span>
+        <span>No Dress Code. Just Vibes.</span>
+      </div>
+    </div>
+
+    <section class="site-preview-wrap" aria-label="Annotated site preview">
+      <div class="preview-heading">
+        <h2>Current Site<br><span class="highlight">Launch Preview</span></h2>
+        <p>The notes layer points to what is included in the selected launch option. Hide notes to view the venue site cleanly.</p>
+      </div>
+
+      <div class="annotated-preview">
+        <div class="mini-site">
+          <section class="mini-hero">
+            <div class="mini-hero-content">
+              <span class="location-chip">Fortitude Valley, Brisbane</span>
+              <h2 class="mini-logo">Suzie Wong's</h2>
+              <div class="mini-kicker">Good Time Bar</div>
+              <p class="mini-tagline">"Life is too short to drink responsibly"</p>
+              <div class="hero-actions">
+                <a class="primary-btn" href="#events">View What's On</a>
+                <a class="outline-btn" href="#functions">Book a Function</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="site-section two-col" id="music">
+            <div>
+              <div class="section-kicker">Live Music</div>
+              <h3>Brisbane's<br><span class="highlight">Loudest</span><br>Little Stage</h3>
+              <p>Wednesday to Saturday every week, Suzie Wong's is packed floor-to-ceiling with sweaty bodies, loud guitars, and people who came here for a quiet drink and stayed until 3am.</p>
+              <p>Rock. Funk. Garage. Soul. Blues. If it's loud and makes you move, it's probably on the stage.</p>
+              <div class="tag-row">
+                <span>Rock</span><span>Funk</span><span>Garage</span><span>Blues</span><span>Soul</span><span>Covers</span>
+              </div>
+              <a class="outline-btn" href="#events">See This Week's Lineup</a>
+            </div>
+            <div class="photo-grid">
+              <figure><img src="attached_assets/IMG_0431_1772241786153.jpeg" alt="Bartender at Suzie Wong's"></figure>
+              <figure><img src="attached_assets/IMG_0466_1772241786153.jpeg" alt="Behind the bar at Suzie Wong's"></figure>
+            </div>
+          </section>
+
+          <section class="site-section venue-band">
+            <div class="section-kicker">The Venue</div>
+            <h3>So Who The F*ck<br><span class="highlight">Is Suzie Wong?</span></h3>
+            <p style="max-width: 760px; margin-inline: auto;">Suzie Wong's is less about the who and more about the vibe - and the vibe is always a good time.</p>
+            <div class="feature-grid">
+              <article class="feature-card">
+                <figure><img src="attached_assets/IMG_0416_1772233759718.jpeg" alt="The fridge door"></figure>
+                <div>
+                  <h4>The Fridge Door</h4>
+                  <p>Walk through a retro fridge and land inside the Valley's good-time hideaway.</p>
+                </div>
+              </article>
+              <article class="feature-card">
+                <figure><img src="attached_assets/IMG_0425_1772233759717.jpeg" alt="Hawaiian dive bar interior"></figure>
+                <div>
+                  <h4>Hawaiian Dive Bar</h4>
+                  <p>Surfboards, neon signs, tiki grit, and the kind of room that feels alive at night.</p>
+                </div>
+              </article>
+              <article class="feature-card">
+                <figure><img src="attached_assets/IMG_0422_1772233759717.jpeg" alt="Suzie Wong's lager"></figure>
+                <div>
+                  <h4>House Lager</h4>
+                  <p>The bar has its own lager, its own attitude, and a clear reason to visit.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="site-section" id="events">
+            <div class="section-kicker">Coming Up</div>
+            <h3>This Week<br><span class="highlight">On Stage</span></h3>
+            <div class="events-grid">
+              <article class="event-card">
+                <div class="event-top">
+                  <div><div class="event-day">Thu</div><div class="event-date">6</div><div class="event-month">Mar</div></div>
+                  <span class="cover free">Free</span>
+                </div>
+                <h4>The Grizzlers</h4>
+                <p>Surf Rock / Garage</p>
+                <div class="event-time">9:30pm</div>
+              </article>
+              <article class="event-card">
+                <div class="event-top">
+                  <div><div class="event-day">Fri</div><div class="event-date">7</div><div class="event-month">Mar</div></div>
+                  <span class="cover">$10</span>
+                </div>
+                <h4>Bad Habits</h4>
+                <p>Classic Rock Covers</p>
+                <div class="event-time">9:30pm</div>
+              </article>
+              <article class="event-card">
+                <div class="event-top">
+                  <div><div class="event-day">Sat</div><div class="event-date">8</div><div class="event-month">Mar</div></div>
+                  <span class="cover">$12</span>
+                </div>
+                <h4>The Midnight Rollers</h4>
+                <p>Funk / Soul</p>
+                <div class="event-time">9pm</div>
+              </article>
+              <article class="event-card">
+                <div class="event-top">
+                  <div><div class="event-day">Sun</div><div class="event-date">9</div><div class="event-month">Mar</div></div>
+                  <span class="cover">$15</span>
+                </div>
+                <h4>Velvet Revolver Tribute</h4>
+                <p>Heavy Rock</p>
+                <div class="event-time">8pm</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="site-section">
+            <div class="section-kicker">Gallery</div>
+            <h3>The Good Times<br><span class="highlight">Were Real</span></h3>
+            <div class="gallery-grid">
+              <figure class="wide"><img src="attached_assets/IMG_0424_1772233759717.jpeg" alt="Crowd at Suzie Wong's"></figure>
+              <figure><img src="attached_assets/IMG_0423_1772233759717.jpeg" alt="Party at Suzie Wong's"></figure>
+              <figure><img src="attached_assets/IMG_0422_1772233759717.jpeg" alt="Bartender at Suzie Wong's"></figure>
+              <figure><img src="attached_assets/IMG_0428_1772233759717.jpeg" alt="Wall of frames"></figure>
+              <figure><img src="attached_assets/IMG_0425_1772233759717.jpeg" alt="Suzie Wong's bar"></figure>
+            </div>
+          </section>
+
+          <section class="function-cta" id="functions">
+            <div>
+              <div class="section-kicker" style="justify-content: center;">Private Events</div>
+              <h3>Your Next Party<br><span class="highlight">Lives Here</span></h3>
+              <p>Birthdays. Work events. Farewell parties where nobody leaves. Suzie Wong's handles private functions, full venue buyouts, and custom packages.</p>
+              <div class="hero-actions">
+                <a class="primary-btn" href="#options">Enquire Now</a>
+                <a class="outline-btn" href="#contact">Get in Touch</a>
+              </div>
+            </div>
+          </section>
+
+          <footer class="footer" id="contact">
+            <div>
+              <h4>Suzie Wong's</h4>
+              <p class="script-line" style="font-size: 25px; margin: 0;">life is too short<br>to drink responsibly</p>
+            </div>
+            <div>
+              <h4>Opening Hours</h4>
+              <ul>
+                <li>Tue-Wed: 4pm - Late</li>
+                <li>Thu: 4pm - 3am</li>
+                <li>Fri-Sat: 2pm - 3am</li>
+                <li>Sun: 2pm - Late</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Find Us</h4>
+              <p>142 Wickham Street<br>Fortitude Valley<br>Brisbane QLD 4006</p>
+              <p>(07) 3454 7339<br>info@suziewongsbar.com.au</p>
+            </div>
+          </footer>
+        </div>
+
+        <div class="notes-layer" aria-label="Launch option annotations">
+          <div class="note note-visual" data-key="visual" data-num="1"><strong>Finished visual concept</strong><span></span></div>
+          <div class="note note-mobile" data-key="mobile" data-num="2"><strong>Mobile-ready layout</strong><span></span></div>
+          <div class="note note-whats-on" data-key="whatsOn" data-num="3"><strong>What's On pathway</strong><span></span></div>
+          <div class="note note-functions" data-key="functions" data-num="4"><strong>Function booking CTA</strong><span></span></div>
+          <div class="note note-contact" data-key="contact" data-num="5"><strong>Contact path</strong><span></span></div>
+          <div class="note note-deploy" data-key="deploy" data-num="6"><strong>Deployment/live setup</strong><span></span></div>
+          <div class="note note-weekly" data-key="weekly" data-num="7"><strong>Reusable weekly update format</strong><span></span></div>
+          <div class="note note-mailing" data-key="mailing" data-num="8"><strong>Mailing capture</strong><span></span></div>
+          <div class="note note-analytics" data-key="analytics" data-num="9"><strong>Analytics/tracking</strong><span></span></div>
+          <div class="note note-admin" data-key="admin" data-num="10"><strong>Lightweight admin/update setup</strong><span></span></div>
+        </div>
+
+        <div class="mobile-note-list" aria-live="polite">
+          <h3>Selected option notes</h3>
+          <ol></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-offer">
+      <p>50% to start. Balance on launch.</p>
+      <strong>Reply with Option 1 or Option 2 and I'll take it from there.</strong>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".option-button"));
+      var noteToggle = document.querySelector(".note-toggle");
+      var activeOffer = document.querySelector(".active-offer");
+      var notesLayer = document.querySelector(".notes-layer");
+      var mobileNotes = document.querySelector(".mobile-note-list ol");
+      var selected = "two";
+      var notesVisible = true;
+
+      var offerCopy = {
+        one: {
+          badge: "",
+          name: "Option 1 - Website Live",
+          price: "$1,950",
+          notes: [
+            ["visual", "Existing visual concept is ready to publish as a polished front door for the venue."],
+            ["mobile", "Responsive layout keeps the hero, cards, CTAs and footer usable on phone screens."],
+            ["whatsOn", "Clear What's On route is present for event discovery and future lineup updates."],
+            ["functions", "Function enquiry CTAs are visible from the hero and private events section."],
+            ["contact", "Footer and contact path make address, phone and email easy to find."],
+            ["deploy", "Static launch packaging, domain/live setup and final deployment checks."]
+          ]
+        },
+        two: {
+          badge: "Recommended",
+          name: "Option 2 - Website + Venue Setup",
+          price: "$3,750",
+          notes: [
+            ["visual", "Everything in Website Live, keeping the finished venue look intact."],
+            ["mobile", "Mobile-ready layout with notes able to stack below the preview cleanly."],
+            ["whatsOn", "Live music / weekly lineup structure becomes a repeatable venue content area."],
+            ["weekly", "Reusable weekly update format for swapping acts, dates, covers and featured nights."],
+            ["functions", "Functions/bookings path is connected as a practical enquiry flow."],
+            ["contact", "Contact path remains visible for simple calls, emails and venue finding."],
+            ["mailing", "Mailing capture can be placed near the venue/event sections for audience growth."],
+            ["analytics", "Analytics/tracking added so traffic, event clicks and enquiries can be measured."],
+            ["admin", "Lightweight admin/update setup for ongoing lineup and content changes."],
+            ["deploy", "Deployment/live setup included, with connected pieces checked from day one."]
+          ]
+        }
+      };
+
+      function render() {
+        var current = offerCopy[selected];
+
+        optionButtons.forEach(function (button) {
+          button.setAttribute("aria-pressed", String(button.dataset.option === selected));
+        });
+
+        activeOffer.innerHTML =
+          (current.badge ? '<span class="recommended">' + current.badge + "</span>" : "") +
+          '<h2 class="offer-name">' + current.name + "</h2>" +
+          '<p class="price">' + current.price + "</p>" +
+          '<p class="deposit">50% to start. Balance on launch.</p>' +
+          '<p class="final-cta">Reply with Option 1 or Option 2 and I\'ll take it from there.</p>';
+
+        notesLayer.hidden = !notesVisible;
+        noteToggle.setAttribute("aria-pressed", String(notesVisible));
+        noteToggle.textContent = notesVisible ? "Notes On" : "Notes Off";
+
+        var activeKeys = current.notes.map(function (note) { return note[0]; });
+        Array.prototype.slice.call(document.querySelectorAll(".note")).forEach(function (note) {
+          var found = current.notes.find(function (item) { return item[0] === note.dataset.key; });
+          note.style.display = found && notesVisible ? "" : "none";
+          if (found) {
+            note.querySelector("span").textContent = found[1];
+            note.setAttribute("data-num", String(activeKeys.indexOf(found[0]) + 1));
+          }
+        });
+
+        mobileNotes.innerHTML = current.notes.map(function (note) {
+          return "<li>" + note[1] + "</li>";
+        }).join("");
+      }
+
+      optionButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          selected = button.dataset.option;
+          render();
+        });
+      });
+
+      noteToggle.addEventListener("click", function () {
+        notesVisible = !notesVisible;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
